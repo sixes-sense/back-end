@@ -1,0 +1,76 @@
+# server config
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 360000s
+    # 인코딩 UTF-8로 설정
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+spring:
+  profiles:
+    active: dev
+  # 운영환경 or 로컬 환경 중에 선택하세요.
+  #    active: prod
+  #  config:
+  #    activate:
+  #    use-legacy-processing: true
+
+  # jpa config
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    generate-ddl : true
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: create
+#      use-new-id-generator-mappings: false
+    defer-datasource-initialization : true
+  sql:
+    init:
+      data-locations: classpath:db/data/data.sql
+      mode: always
+      platform: mysql
+      encoding: UTF-8
+
+    web:
+      resources:
+        static-locations: file:src/main/resources/static/
+
+  # file upload
+  servlet:
+    multipart:
+      # 파일 업로드 가능 여부 선택
+      enabled: true
+      # 업로드된 파일의 임시 저장 경로
+      #      location: C:\
+      # 한 번에 최대 업로드 가능 용량
+      max-request-size: 100MB
+      # 파일 하나의 최대 크기
+      max-file-size: 20MB
+  mail:
+    host: smtp.gmail.com
+    port: 465
+    username:
+    password:
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            trust: smtp.gmail.com
+          starttls:
+            enable: true
+          transport:
+            protocol: smtp
+
+
+uploadPath: file:///C:\app-file\uploadFiles/
