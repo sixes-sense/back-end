@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@EntityScan(basePackages = "com.goalapa.cacamuca")
+@EntityScan(basePackages = "com.sixesSense.recorder")
 @EnableJpaRepositories(basePackages = "com.sixesSense.recorder")
 public class JpaConfiguration {
 }
