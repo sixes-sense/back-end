@@ -1,7 +1,7 @@
 ---
 name: "Issue: \U0001F41EBUGFIX"
 about: bugfix 작업사항을 입력해주세요.
-title: ''
+title: "[BugFix] "
 labels: ''
 assignees: ''
 

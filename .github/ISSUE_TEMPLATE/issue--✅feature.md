@@ -1,7 +1,7 @@
 ---
 name: 'Issue: ✅FEATURE'
 about: feature 작업사항을 입력해주세요.
-title: ''
+title: "[Feature] "
 labels: ''
 assignees: ''
 
