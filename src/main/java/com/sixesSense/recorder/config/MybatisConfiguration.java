@@ -5,6 +5,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan(basePackages = "com.sixesSense.recorder", annotationClass = Mapper.class)
+@MapperScan(basePackages = "com.sixesSense.recorder", annotationClass = Mapper.class )
 public class MybatisConfiguration {
 }
