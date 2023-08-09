@@ -4,7 +4,7 @@ import com.sixesSense.recorder.exampleDomain.query.domain.service.QueryExampleSe
 import org.springframework.stereotype.Service;
 
 
-vice
+
 public class QueryExampleServiceImpl implements QueryExampleService {
 
 }
