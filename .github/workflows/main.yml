@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: back-end/package-lock.json
           
       - name: npm install & build
         run: |
@@ -47,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './frontend/build'
+          path: './back-end/build'
           
       - name: Deploy to GitHub Pages
         id: deployment
@@ -60,7 +60,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
           
-            const deployURL = 'https://usageness.github.io/gitflow-test/';
+            const deployURL = 'https://sixes-sense.github.io/gitflow-test/';
             const comments = [
               `## Deploy Preview`,
               `🔥 **check your project preview here!** : `
