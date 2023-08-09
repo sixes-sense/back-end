@@ -60,7 +60,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
           
-            const deployURL = 'https://sixes-sense.github.io/gitflow-test/';
+            const deployURL = 'https://sixes-sense.github.io/back-end/gitflow-test/';
             const comments = [
               `## Deploy Preview`,
               `🔥 **check your project preview here!** : `
