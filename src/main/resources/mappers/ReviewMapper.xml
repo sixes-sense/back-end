@@ -2,10 +2,6 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<<< HEAD:src/main/resources/mappers/ReviewMapper.xml
-<mapper namespace="com.sixesSense.recorder.exampleDomain.query.domain.repository.ExampleMapper">
-========
-<mapper namespace="com.sixesSense.recorder.AchievementsDomain.query.domain.repository.AchievementsMapper">
->>>>>>>> feature/achievements:src/main/resources/mappers/AchievementsMapper.xml
+<mapper namespace="com.sixesSense.recorder.review.query.domain.repository.ReviewMapper">
 
 </mapper>
