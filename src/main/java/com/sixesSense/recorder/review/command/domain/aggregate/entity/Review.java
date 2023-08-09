@@ -1,7 +1,6 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.BookMarkVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReportVO;
+import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.AccessLevel;
@@ -57,4 +56,18 @@ public class Review {
         this.tagNo = tagNo;
         this.reviewWriter = reviewWriter;
     }
+
+    public static Review toEntity(ReviewDTO reviewDTO){
+        return new Review(
+                reviewDTO.getReviewTitle(),
+                reviewDTO.getReviewContent(),
+                reviewDTO.getReviewDate(),
+                reviewDTO.getLikeCnt(),
+                reviewDTO.getReportCnt(),
+                reviewDTO.getBookMarkCnt(),
+                new TagVO(reviewDTO.getTagNo()),
+                new ReviewWriterVO(reviewDTO.getReviewWriter())
+                );
+    }
+
 }
