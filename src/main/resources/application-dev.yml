@@ -16,7 +16,7 @@ spring:
                 show_sql: true
                 format_sql: true
         hibernate:
-            ddl-auto: none
+            ddl-auto: create
         defer-datasource-initialization: true
     sql:
         init:
@@ -24,7 +24,7 @@ spring:
             mode: never
             platform: mysql
             encoding: UTF-8
-        # file upload
+    # file upload
     servlet:
         multipart:
             # 파일 업로드 가능 여부 선택
@@ -35,4 +35,13 @@ spring:
             max-request-size: 100MB
             # 파일 하나의 최대 크기
             max-file-size: 20MB
+logging:
+    level:
+        org.mybatis: TRACE
+        org.thymeleaf: TRACE
+        org.quartz.core: TRACE
+        org.hibernate.SQL: TRACE
+        org.h2.server.web: TRACE
+        com.sixesSense.recorder: TRACE
+        org.springframework.web: TRACE
 
