@@ -35,4 +35,13 @@ spring:
             max-request-size: 100MB
             # 파일 하나의 최대 크기
             max-file-size: 20MB
+logging:
+    level:
+        org.mybatis: TRACE
+        org.thymeleaf: TRACE
+        org.quartz.core: TRACE
+        org.hibernate.SQL: TRACE
+        org.h2.server.web: TRACE
+        com.sixesSense.recorder: TRACE
+        org.springframework.web: TRACE
 
