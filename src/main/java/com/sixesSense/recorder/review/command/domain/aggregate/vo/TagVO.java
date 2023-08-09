@@ -5,16 +5,14 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-
 @Embeddable
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class BookMarkVO {
+public class TagVO {
 
-    @Column(name = "book_mark_no")
-    private Long bookMarkNo;
-
+    @Column(name = "tag_no")
+    private Long tagNo;
 }

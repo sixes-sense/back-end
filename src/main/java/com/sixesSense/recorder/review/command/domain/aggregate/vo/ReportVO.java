@@ -13,10 +13,6 @@ import javax.persistence.Embeddable;
 @ToString
 public class ReportVO {
 
-    // 신고와 상의 필요
     @Column(name = "report_no")
     private Long reportNo;
-
-    @Column(name = "report_cnt")
-    private Long reportCnt;
 }
