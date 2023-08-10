@@ -69,5 +69,4 @@ public class Review {
                 new ReviewWriterVO(reviewDTO.getReviewWriter())
                 );
     }
-
 }
