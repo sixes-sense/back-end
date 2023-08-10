@@ -41,7 +41,6 @@ public class ReviewControllerTests {
     @Test
     void ReadContent() {
         List<ReviewDTO> reviewDTOList = reviewMapper.reviewLists();
-
         Assertions.assertNotNull(reviewDTOList);
     }
 }
