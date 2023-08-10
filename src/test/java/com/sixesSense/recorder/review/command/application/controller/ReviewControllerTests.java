@@ -24,7 +24,7 @@ public class ReviewControllerTests {
     @Autowired
     private ReviewMapper reviewMapper;
 
-    @DisplayName("저장 테스트")
+    @DisplayName("저장 확인")
     @Test
     void CreateContent() {
         String title = "테스트 제목";
