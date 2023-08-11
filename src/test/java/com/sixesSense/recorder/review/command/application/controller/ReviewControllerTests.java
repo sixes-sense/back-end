@@ -31,7 +31,6 @@ public class ReviewControllerTests {
         String content = "테스트 내용";
 
         ReviewDTO review = TestObjects.createContentWithReview(title, content);
-
         Assertions.assertDoesNotThrow(
                 () -> commandReviewService.reviewSave(review)
         );
