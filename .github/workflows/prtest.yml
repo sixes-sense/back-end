@@ -39,6 +39,15 @@ jobs:
           arguments: build
           
           
+      - name: Set up Git LFS
+        run: |
+          git lfs install
+          git lfs track "libs/recorder-0.0.1-SNAPSHOT.jar"
+          git add .gitattributes
+          git add "libs/recorder-0.0.1-SNAPSHOT.jar"
+          git commit -m "Enable LFS for large files"
+          
+          
       - name: Deploy to GitHub Pages
         if: ${{ success() }}
         uses: peaceiris/actions-gh-pages@v3
