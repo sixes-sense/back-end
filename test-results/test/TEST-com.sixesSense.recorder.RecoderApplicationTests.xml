@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.sixesSense.recorder.RecoderApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-11T01:12:31" hostname="fv-az626-402" time="0.107">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.sixesSense.recorder.RecoderApplicationTests" time="0.107"/>
+  <system-out><![CDATA[01:12:23.266 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+01:12:23.287 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+01:12:23.348 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.sixesSense.recorder.RecoderApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+01:12:23.360 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.sixesSense.recorder.RecoderApplicationTests], using SpringBootContextLoader
+01:12:23.364 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.sixesSense.recorder.RecoderApplicationTests]: class path resource [com/sixesSense/recorder/RecoderApplicationTests-context.xml] does not exist
+01:12:23.373 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.sixesSense.recorder.RecoderApplicationTests]: class path resource [com/sixesSense/recorder/RecoderApplicationTestsContext.groovy] does not exist
+01:12:23.374 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.sixesSense.recorder.RecoderApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+01:12:23.375 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.sixesSense.recorder.RecoderApplicationTests]: RecoderApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:12:23.439 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.sixesSense.recorder.RecoderApplicationTests]
+01:12:23.495 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/RecoderApplication.class]
+01:12:23.497 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.sixesSense.recorder.RecoderApplication for test class com.sixesSense.recorder.RecoderApplicationTests
+01:12:23.615 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.sixesSense.recorder.RecoderApplicationTests]: using defaults.
+01:12:23.617 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+01:12:23.639 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6e0ff644, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@58dea0a5, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2a2bb0eb, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3c291aad, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2d0566ba, org.springframework.test.context.support.DirtiesContextTestExecutionListener@733037, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7728643a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@320e400, org.springframework.test.context.event.EventPublishingTestExecutionListener@5167268, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1cfd1875, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@28c0b664, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2c444798, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1af7f54a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6ebd78d1, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@436390f4]
+01:12:23.644 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@7577b641 testClass = RecoderApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@3704122f testClass = RecoderApplicationTests, locations = '{}', classes = '{class com.sixesSense.recorder.RecoderApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@62163b39, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@cb191ca, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1f2f9244, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@758c83d8, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@e077866, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@452e19ca], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.14)
+
+2023-08-11 01:12:24.334  INFO 2864 --- [    Test worker] c.s.recorder.RecoderApplicationTests     : Starting RecoderApplicationTests using Java 11.0.20 on fv-az626-402 with PID 2864 (started by runner in /home/runner/work/back-end/back-end)
+2023-08-11 01:12:24.336 DEBUG 2864 --- [    Test worker] c.s.recorder.RecoderApplicationTests     : Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-08-11 01:12:24.337  INFO 2864 --- [    Test worker] c.s.recorder.RecoderApplicationTests     : The following 1 profile is active: "dev"
+2023-08-11 01:12:24.435 TRACE 2864 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7a55f148, started on Fri Aug 11 01:12:24 UTC 2023
+2023-08-11 01:12:25.690  INFO 2864 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-11 01:12:25.757  INFO 2864 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 2 JPA repository interfaces.
+2023-08-11 01:12:26.130 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/test/com/sixesSense/recorder/RecoderApplicationTests.class]
+2023-08-11 01:12:26.130 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/test/com/sixesSense/recorder/RecoderApplicationTests.class]
+2023-08-11 01:12:26.131 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/test/com/sixesSense/recorder/review/command/application/controller/ReviewControllerTests.class]
+2023-08-11 01:12:26.131 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/test/com/sixesSense/recorder/review/command/application/controller/ReviewControllerTests.class]
+2023-08-11 01:12:26.131 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/test/com/sixesSense/recorder/review/command/application/controller/object/TestObjects.class]
+2023-08-11 01:12:26.131 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/test/com/sixesSense/recorder/review/command/application/controller/object/TestObjects.class]
+2023-08-11 01:12:26.131 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/application/controller/CommandAchievementsController.class]
+2023-08-11 01:12:26.131 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/application/controller/CommandAchievementsController.class]
+2023-08-11 01:12:26.132 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/application/dto/AchievementsDTO.class]
+2023-08-11 01:12:26.132 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/application/dto/AchievementsDTO.class]
+2023-08-11 01:12:26.132 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/application/service/CommandAchievementsServiceImpl.class]
+2023-08-11 01:12:26.132 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/application/service/CommandAchievementsServiceImpl.class]
+2023-08-11 01:12:26.132 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/domain/aggregate/entity/Achievements.class]
+2023-08-11 01:12:26.133 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/domain/aggregate/entity/Achievements.class]
+2023-08-11 01:12:26.133 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/domain/repository/AchievementsRepository.class]
+2023-08-11 01:12:26.133 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/domain/repository/AchievementsRepository.class]
+2023-08-11 01:12:26.134 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/domain/service/CommandAchievementsService.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/domain/service/CommandAchievementsService.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/ininfrastructure/repository/Repository.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/ininfrastructure/repository/Repository.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/ininfrastructure/service/InfraCommandAchievementsService.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/command/ininfrastructure/service/InfraCommandAchievementsService.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/application/controller/QueryAchievementsController.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/application/controller/QueryAchievementsController.class]
+2023-08-11 01:12:26.135 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/application/service/QueryAchievementsServiceImpl.class]
+2023-08-11 01:12:26.136 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/application/service/QueryAchievementsServiceImpl.class]
+2023-08-11 01:12:26.136 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/domain/aggregate/dto/AchievementsDTO.class]
+2023-08-11 01:12:26.136 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/domain/aggregate/dto/AchievementsDTO.class]
+2023-08-11 01:12:26.136 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/domain/repository/AchievementsMapper.class]
+2023-08-11 01:12:26.136 DEBUG 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/domain/repository/AchievementsMapper.class]
+2023-08-11 01:12:26.137 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/domain/service/QueryAchievementsService.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/domain/service/QueryAchievementsService.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/infrastructure/service/InfraQueryAchievementsService.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/AchievementsDomain/query/infrastructure/service/InfraQueryAchievementsService.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/RecoderApplication.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/RecoderApplication.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/config/BeanConfiguration.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/config/BeanConfiguration.class]
+2023-08-11 01:12:26.139 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/config/JpaConfiguration.class]
+2023-08-11 01:12:26.140 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/config/JpaConfiguration.class]
+2023-08-11 01:12:26.140 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/config/MybatisConfiguration.class]
+2023-08-11 01:12:26.140 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/config/MybatisConfiguration.class]
+2023-08-11 01:12:26.140 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/application/controller/CommandReviewController.class]
+2023-08-11 01:12:26.140 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/application/controller/CommandReviewController.class]
+2023-08-11 01:12:26.141 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/application/dto/ReviewDTO.class]
+2023-08-11 01:12:26.141 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/application/dto/ReviewDTO.class]
+2023-08-11 01:12:26.141 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/application/service/CommandReviewServiceImpl.class]
+2023-08-11 01:12:26.154 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/application/service/CommandReviewServiceImpl.class]
+2023-08-11 01:12:26.155 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/entity/Review.class]
+2023-08-11 01:12:26.156 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/entity/Review.class]
+2023-08-11 01:12:26.158 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/BookMarkVO.class]
+2023-08-11 01:12:26.158 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/BookMarkVO.class]
+2023-08-11 01:12:26.159 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/ReportVO.class]
+2023-08-11 01:12:26.159 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/ReportVO.class]
+2023-08-11 01:12:26.160 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/ReviewWriterVO.class]
+2023-08-11 01:12:26.161 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/ReviewWriterVO.class]
+2023-08-11 01:12:26.161 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/TagVO.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/aggregate/vo/TagVO.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/repository/ReviewRepository.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/repository/ReviewRepository.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/service/ReviewService.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/domain/service/ReviewService.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/ininfrastructure/service/QueryReviewService.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/command/ininfrastructure/service/QueryReviewService.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/application/controller/QueryReviewController.class]
+2023-08-11 01:12:26.163 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/application/controller/QueryReviewController.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/application/dto/QueryReviewDTO.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/application/dto/QueryReviewDTO.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/application/service/QueryReviewService.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/application/service/QueryReviewService.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/domain/repository/ReviewMapper.class]
+2023-08-11 01:12:26.164 DEBUG 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/domain/repository/ReviewMapper.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/domain/service/QueryReviewServiceInterface.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/domain/service/QueryReviewServiceInterface.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Scanning file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/infrastructure/service/QueryReviewServiceImpl.class]
+2023-08-11 01:12:26.164 TRACE 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Ignored because not matching any filter: file [/home/runner/work/back-end/back-end/build/classes/java/main/com/sixesSense/recorder/review/query/infrastructure/service/QueryReviewServiceImpl.class]
+2023-08-11 01:12:26.166 DEBUG 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'achievementsMapper' and 'com.sixesSense.recorder.AchievementsDomain.query.domain.repository.AchievementsMapper' mapperInterface
+2023-08-11 01:12:26.175 DEBUG 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'achievementsMapper'.
+2023-08-11 01:12:26.179 DEBUG 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'reviewMapper' and 'com.sixesSense.recorder.review.query.domain.repository.ReviewMapper' mapperInterface
+2023-08-11 01:12:26.180 DEBUG 2864 --- [    Test worker] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'reviewMapper'.
+2023-08-11 01:12:26.293  INFO 2864 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2070ea04-cc27-3f47-8c12-495aaceeb991
+2023-08-11 01:12:26.564 TRACE 2864 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : No 'messageSource' bean, using [Empty MessageSource]
+2023-08-11 01:12:26.564 TRACE 2864 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : No 'applicationEventMulticaster' bean, using [SimpleApplicationEventMulticaster]
+2023-08-11 01:12:26.847  INFO 2864 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-11 01:12:26.898  INFO 2864 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-11 01:12:27.086  INFO 2864 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-11 01:12:27.203  INFO 2864 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-11 01:12:27.681  INFO 2864 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-11 01:12:27.701  INFO 2864 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-08-11 01:12:28.841 DEBUG 2864 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists review
+Hibernate: 
+    
+    drop table if exists review
+2023-08-11 01:12:28.878 DEBUG 2864 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists tb_achievements
+Hibernate: 
+    
+    drop table if exists tb_achievements
+2023-08-11 01:12:28.888 DEBUG 2864 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table review (
+       review_no bigint not null auto_increment,
+        book_mark_cnt bigint,
+        like_cnt bigint,
+        report_cnt bigint,
+        review_content varchar(255),
+        review_date date,
+        review_title varchar(255),
+        member_no bigint,
+        tag_no bigint,
+        primary key (review_no)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table review (
+       review_no bigint not null auto_increment,
+        book_mark_cnt bigint,
+        like_cnt bigint,
+        report_cnt bigint,
+        review_content varchar(255),
+        review_date date,
+        review_title varchar(255),
+        member_no bigint,
+        tag_no bigint,
+        primary key (review_no)
+    ) engine=InnoDB
+2023-08-11 01:12:28.916 DEBUG 2864 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table tb_achievements (
+       archievements_no integer not null,
+        archivements_description varchar(255),
+        primary key (archievements_no)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table tb_achievements (
+       archievements_no integer not null,
+        archivements_description varchar(255),
+        primary key (archievements_no)
+    ) engine=InnoDB
+2023-08-11 01:12:28.935  INFO 2864 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-11 01:12:28.946  INFO 2864 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-11 01:12:29.687  WARN 2864 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-11 01:12:30.010 DEBUG 2864 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-08-11 01:12:30.140 TRACE 2864 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.s.r.A.c.a.c.CommandAchievementsController:
+	
+2023-08-11 01:12:30.141 TRACE 2864 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	c.s.r.r.c.a.c.CommandReviewController:
+	
+2023-08-11 01:12:30.161 TRACE 2864 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+	{ [/error]}: error(HttpServletRequest)
+2023-08-11 01:12:30.168 DEBUG 2864 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2023-08-11 01:12:30.209 DEBUG 2864 --- [    Test worker] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2023-08-11 01:12:30.221 TRACE 2864 --- [    Test worker] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2023-08-11 01:12:30.243 TRACE 2864 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2023-08-11 01:12:30.243 TRACE 2864 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-08-11 01:12:30.243 DEBUG 2864 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-08-11 01:12:30.274 DEBUG 2864 --- [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-08-11 01:12:30.708 DEBUG 2864 --- [    Test worker] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [/home/runner/work/back-end/back-end/build/resources/main/mappers/AchievementsMapper.xml]'
+2023-08-11 01:12:30.782 DEBUG 2864 --- [    Test worker] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [/home/runner/work/back-end/back-end/build/resources/main/mappers/ReviewMapper.xml]'
+2023-08-11 01:12:31.020 TRACE 2864 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Using LifecycleProcessor [org.springframework.context.support.DefaultLifecycleProcessor@6cfe32cd]
+2023-08-11 01:12:31.042  INFO 2864 --- [    Test worker] c.s.recorder.RecoderApplicationTests     : Started RecoderApplicationTests in 7.314 seconds (JVM running for 8.978)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
