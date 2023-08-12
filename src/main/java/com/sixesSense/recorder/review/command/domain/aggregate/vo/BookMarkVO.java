@@ -14,10 +14,7 @@ import javax.persistence.Embeddable;
 @ToString
 public class BookMarkVO {
 
-    // 북마크랑 상의 필요
     @Column(name = "book_mark_no")
-    private Integer bookMarkNo;
+    private Long bookMarkNo;
 
-    @Column(name = "book_mark_cnt")
-    private Integer bookMarkCnt;
 }

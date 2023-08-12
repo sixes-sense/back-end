@@ -11,8 +11,8 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ReviewWriterVO {
-    // 회원 pk 맞춰야함
-    @Column(name = "member_no")
-    private Long reviewWriterMemberNo;
+public class TagVO {
+
+    @Column(name = "tag_no")
+    private Long tagNo;
 }
