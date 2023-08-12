@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class TestObjects {
 
-    public static ReviewDTO createContentWithReview(String title, String content){
-        return new ReviewDTO(title, content, LocalDate.now(), 0L, 0L, 0L, 1L, 1L);
+    public static ReviewDTO createContentWithReview(){
+        return new ReviewDTO("테스트 제목", "테스트 내용", LocalDate.now(), 0L, 0L, 0L, 1L, 1L);
     }
 }

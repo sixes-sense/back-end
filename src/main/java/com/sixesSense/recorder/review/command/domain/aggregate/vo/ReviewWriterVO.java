@@ -12,7 +12,6 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @ToString
 public class ReviewWriterVO {
-
     // 회원 pk 맞춰야함
     @Column(name = "member_no")
     private Long reviewWriterMemberNo;

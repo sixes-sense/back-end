@@ -3,6 +3,7 @@ package com.sixesSense.recorder.review.command.application.controller;
 import com.sixesSense.recorder.review.command.application.controller.object.TestObjects;
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
+import com.sixesSense.recorder.review.query.application.dto.QueryReviewDTO;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -24,24 +25,32 @@ public class ReviewControllerTests {
     @Autowired
     private ReviewMapper reviewMapper;
 
-    @DisplayName("저장 확인")
+    @DisplayName("리뷰 등록")
     @Test
-    void CreateContent() {
-        String title = "테스트 제목";
-        String content = "테스트 내용";
-
-        ReviewDTO review = TestObjects.createContentWithReview(title, content);
+    void CreateReview() {
+        ReviewDTO review = TestObjects.createContentWithReview();
 
         Assertions.assertDoesNotThrow(
                 () -> commandReviewService.reviewSave(review)
         );
     }
 
-    @DisplayName("조회 테스트")
+    @DisplayName("리뷰 전체 조회")
     @Test
-    void ReadContent() {
-        List<ReviewDTO> reviewDTOList = reviewMapper.reviewLists();
+    void ReadReviews() {
+        List<QueryReviewDTO> reviewDTOList = reviewMapper.reviewLists();
 
         Assertions.assertNotNull(reviewDTOList);
+    }
+
+    @DisplayName("리뷰 상세 조회")
+    @Test
+    void ReadReviewByReviewNo() {
+        Integer reviewNo = 1;
+
+        QueryReviewDTO review = reviewMapper.reviewListByReviewNo(reviewNo);
+        System.out.println("review = " + review);
+
+        Assertions.assertNotNull(review);
     }
 }

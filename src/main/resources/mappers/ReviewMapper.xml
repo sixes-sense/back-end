@@ -16,9 +16,16 @@
         <result property="reviewWriter" column="member_no"/>
     </resultMap>
 
-    <!-- 모든 리뷰 조회 -->
+    <!-- 전체 리뷰 조회 -->
     <select id="reviewLists" resultMap="reviewResultMap">
         select *
         from review
+    </select>
+
+    <!-- 상세 리뷰 조회-->
+    <select id="reviewListByReviewNo" resultMap="reviewResultMap">
+        select *
+        from review r
+        where r.review_no = #{reviewNo}
     </select>
 </mapper>
