@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,9 +20,10 @@ public class CommandReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public void reviewSave(ReviewDTO reviewDTO) {
+    public Review reviewSave(ReviewDTO reviewDTO) {
         Review review = Review.toEntity(reviewDTO);
         reviewRepository.save(review);
+        return review;
     }
 
     @Override
