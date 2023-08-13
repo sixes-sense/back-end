@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -25,7 +26,7 @@ public class ReviewControllerTests {
     @Autowired
     private ReviewMapper reviewMapper;
 
-    @DisplayName("리뷰 등록")
+    @DisplayName("리뷰 등록 테스트")
     @Test
     void CreateReview() {
         ReviewDTO review = TestObjects.createContentWithReview();
@@ -35,7 +36,7 @@ public class ReviewControllerTests {
         );
     }
 
-    @DisplayName("리뷰 전체 조회")
+    @DisplayName("리뷰 전체 조회 테스트")
     @Test
     void ReadReviews() {
         List<QueryReviewDTO> reviewDTOList = reviewMapper.reviewLists();
@@ -43,14 +44,28 @@ public class ReviewControllerTests {
         Assertions.assertNotNull(reviewDTOList);
     }
 
-    @DisplayName("리뷰 상세 조회")
+    @DisplayName("리뷰 상세 조회 테스트")
     @Test
     void ReadReviewByReviewNo() {
         Integer reviewNo = 1;
 
         QueryReviewDTO review = reviewMapper.reviewListByReviewNo(reviewNo);
-        System.out.println("review = " + review);
 
         Assertions.assertNotNull(review);
     }
+
+    @DisplayName("리뷰 수정 테스트")
+    @Test
+    void UpdateReviewByReviewNo(){
+        Integer reviewNo = 1;
+        String reviewTitle = "제목 수정 테스트";
+        String reviewContent = "내용 수정 테스트";
+        LocalDate reviewDate = LocalDate.now();
+        Long tagNo = 2l;
+
+        QueryReviewDTO review = reviewMapper.reviewListByReviewNo(reviewNo);
+
+    }
+
+
 }

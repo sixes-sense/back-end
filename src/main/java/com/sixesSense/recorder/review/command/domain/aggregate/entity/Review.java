@@ -3,10 +3,7 @@ package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,7 +11,9 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @ToString
+@Builder
 public class Review {
 
     @Id
@@ -58,15 +57,15 @@ public class Review {
     }
 
     public static Review toEntity(ReviewDTO reviewDTO){
-        return new Review(
-                reviewDTO.getReviewTitle(),
-                reviewDTO.getReviewContent(),
-                reviewDTO.getReviewDate(),
-                reviewDTO.getLikeCnt(),
-                reviewDTO.getReportCnt(),
-                reviewDTO.getBookMarkCnt(),
-                new TagVO(reviewDTO.getTagNo()),
-                new ReviewWriterVO(reviewDTO.getReviewWriter())
-                );
+        return Review.builder()
+                .reviewTitle(reviewDTO.getReviewTitle())
+                .reviewContent(reviewDTO.getReviewContent())
+                .reviewDate(reviewDTO.getReviewDate())
+                .likeCnt(reviewDTO.getLikeCnt())
+                .reportCnt(reviewDTO.getReportCnt())
+                .bookMarkCnt(reviewDTO.getBookMarkCnt())
+                .tagNo(new TagVO(reviewDTO.getTagNo()))
+                .reviewWriter(new ReviewWriterVO(reviewDTO.getReviewWriter()))
+                .build();
     }
 }
