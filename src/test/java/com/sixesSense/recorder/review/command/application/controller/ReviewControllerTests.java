@@ -15,10 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
 
 @SpringBootTest
-@Transactional
 public class ReviewControllerTests {
 
     @Autowired
@@ -80,6 +80,14 @@ public class ReviewControllerTests {
     @DisplayName("리뷰 삭제")
     @Test
     void DeleteReview(){
+        Long reviewNo = 1L;
 
+        ReviewDTO review = TestObjects.createContentWithReview();
+
+        Assertions.assertDoesNotThrow(
+                () -> commandReviewService.reviewDelete(reviewNo, review)
+        );
+
+        Assertions.assertNull(reviewRepository.findByReviewNo(reviewNo));
     }
 }

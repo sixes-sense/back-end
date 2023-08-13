@@ -32,4 +32,10 @@ public class CommandReviewServiceImpl implements ReviewService {
         Review review = reviewRepository.findByReviewNo(reviewNo);
         review.updateReview(updatedReview);
     }
+
+    @Override
+    @Transactional
+    public void reviewDelete(Long reviewNo, ReviewDTO reviewDTO) {
+        reviewRepository.deleteByReviewNo(reviewNo);
+    }
 }

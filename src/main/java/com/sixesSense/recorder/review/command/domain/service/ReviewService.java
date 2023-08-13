@@ -9,4 +9,6 @@ public interface ReviewService {
 
     void reviewUpdate(Long reviewNo, ReviewDTO review);
 
+    void reviewDelete(Long reviewNo, ReviewDTO review);
+
 }

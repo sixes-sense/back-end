@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
     Review findByReviewNo(Long reviewNo);
+
+    void deleteByReviewNo(Long reviewNo);
 }
