@@ -3,6 +3,8 @@ package com.sixesSense.recorder.review.command.application.controller;
 import com.sixesSense.recorder.review.command.application.controller.object.TestObjects;
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
+import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import com.sixesSense.recorder.review.query.application.dto.QueryReviewDTO;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import org.junit.jupiter.api.Assertions;
@@ -21,6 +23,9 @@ public class ReviewControllerTests {
 
     @Autowired
     private CommandReviewServiceImpl commandReviewService;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Autowired
     private ReviewMapper reviewMapper;
@@ -49,8 +54,32 @@ public class ReviewControllerTests {
         Integer reviewNo = 1;
 
         QueryReviewDTO review = reviewMapper.reviewListByReviewNo(reviewNo);
-        System.out.println("review = " + review);
 
         Assertions.assertNotNull(review);
+    }
+
+    @DisplayName("리뷰 수정")
+    @Test
+    void UpdateReview(){
+        Long reviewNo = 1L;
+
+        ReviewDTO review = TestObjects.createContentWithReview();
+
+        Assertions.assertDoesNotThrow(
+                () -> commandReviewService.reviewUpdate(reviewNo, review)
+        );
+
+        Review updatedReview = reviewRepository.findByReviewNo(reviewNo);
+        Assertions.assertTrue(
+                review.getReviewTitle().equals(updatedReview.getReviewTitle()) &&
+                        review.getReviewContent().equals(updatedReview.getReviewContent()) &&
+                        review.getReviewDate().equals(updatedReview.getReviewDate())
+        );
+    }
+
+    @DisplayName("리뷰 삭제")
+    @Test
+    void DeleteReview(){
+
     }
 }
