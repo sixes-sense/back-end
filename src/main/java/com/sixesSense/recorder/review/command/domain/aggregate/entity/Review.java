@@ -68,4 +68,18 @@ public class Review {
                 .reviewWriter(new ReviewWriterVO(reviewDTO.getReviewWriter()))
                 .build();
     }
+
+    public void updateReview(ReviewDTO updatedReview){
+        if(updatedReview.getReviewTitle() != null) {
+            this.reviewTitle = updatedReview.getReviewTitle();
+        }
+
+        if(updatedReview.getReviewContent() != null){
+            this.reviewContent = updatedReview.getReviewContent();
+        }
+
+        if(updatedReview.getReviewDate() != LocalDate.now()){
+            this.reviewDate = updatedReview.getReviewDate();
+        }
+    }
 }

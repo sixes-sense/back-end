@@ -7,4 +7,8 @@ public interface ReviewService {
 
     void reviewSave(ReviewDTO review);
 
+    void reviewUpdate(Long reviewNo, ReviewDTO review);
+
+    void reviewDelete(Long reviewNo, ReviewDTO review);
+
 }
