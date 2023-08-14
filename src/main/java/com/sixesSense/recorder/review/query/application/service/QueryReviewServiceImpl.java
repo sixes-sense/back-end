@@ -35,4 +35,11 @@ public class QueryReviewServiceImpl implements QueryReviewService {
 
         return pagingReviews;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public QueryReviewDTO getReviewDetail(Long reviewNo) {
+        QueryReviewDTO reviewDetail = reviewMapper.reviewListByReviewNo(reviewNo);
+        return reviewDetail;
+    }
 }

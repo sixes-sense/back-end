@@ -12,6 +12,7 @@ public class TestObjects {
 
     public static ReviewDTO createContentWithReview(){
         return ReviewDTO.builder()
+                .reviewNo(1L)
                 .reviewTitle("테스트 제목")
                 .reviewContent("테스트 내용")
                 .reviewDate(LocalDate.now())

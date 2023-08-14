@@ -13,5 +13,5 @@ public interface ReviewMapper {
     List<QueryReviewDTO> reviewLists();
 
     // 리뷰 상세 조회
-    QueryReviewDTO reviewListByReviewNo(Integer reviewNo);
+    QueryReviewDTO reviewListByReviewNo(Long reviewNo);
 }

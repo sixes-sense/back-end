@@ -51,7 +51,7 @@ public class ReviewControllerTests {
     @DisplayName("리뷰 상세 조회 테스트")
     @Test
     void ReadReviewByReviewNo() {
-        Integer reviewNo = 1;
+        Long reviewNo = 1L;
 
         QueryReviewDTO review = reviewMapper.reviewListByReviewNo(reviewNo);
         System.out.println("review = " + review);
@@ -67,7 +67,7 @@ public class ReviewControllerTests {
         ReviewDTO review = TestObjects.createContentWithReview();
 
         Assertions.assertDoesNotThrow(
-                () -> commandReviewService.reviewUpdate(reviewNo, review)
+                () -> commandReviewService.reviewUpdate(review)
         );
 
         Review updatedReview = reviewRepository.findByReviewNo(reviewNo);
@@ -83,10 +83,8 @@ public class ReviewControllerTests {
     void DeleteReview(){
         Long reviewNo = 1L;
 
-        ReviewDTO review = TestObjects.createContentWithReview();
-
         Assertions.assertDoesNotThrow(
-                () -> commandReviewService.reviewDelete(reviewNo, review)
+                () -> commandReviewService.reviewDelete(reviewNo)
         );
 
         Assertions.assertNull(reviewRepository.findByReviewNo(reviewNo));

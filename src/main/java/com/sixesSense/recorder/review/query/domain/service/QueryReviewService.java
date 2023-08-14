@@ -6,5 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface QueryReviewService {
     Page<QueryReviewDTO> getReviews(Pageable pageable);
+    QueryReviewDTO getReviewDetail(Long reviewNo);
 
 }
