@@ -38,21 +38,6 @@ jobs:
         with:
           arguments: build
 
-      - name: request reviewers
-        uses: actions/github-script@0.2.0
-        with:
-          github-token: ${{secrets.PAGES_TOKEN}}
-          script: |
-            const ref = "${{github.ref}}"
-            const pull_number = Number(ref.split("/")[2])
-
-            github.pulls.requestReviewers({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pull_number,
-              reviewers: ["kny3037", "bbbbooo", "jinvvoo", "ChoMyeongHwan", "myrhymetree", "taegeun-park0525"]
-            });
-
             
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
