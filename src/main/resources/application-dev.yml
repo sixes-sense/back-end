@@ -20,8 +20,8 @@ spring:
         defer-datasource-initialization: true
     sql:
         init:
-            data-locations: classpath:db/data/data.sql
-            mode: never
+            data-locations: classpath:sql/dml.sql
+            mode: always
             platform: mysql
             encoding: UTF-8
     # file upload
