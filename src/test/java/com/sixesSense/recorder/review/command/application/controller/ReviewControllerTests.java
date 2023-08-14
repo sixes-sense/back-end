@@ -54,7 +54,6 @@ public class ReviewControllerTests {
         Long reviewNo = 1L;
 
         QueryReviewDTO review = reviewMapper.reviewListByReviewNo(reviewNo);
-        System.out.println("review = " + review);
 
         Assertions.assertNotNull(review);
     }
