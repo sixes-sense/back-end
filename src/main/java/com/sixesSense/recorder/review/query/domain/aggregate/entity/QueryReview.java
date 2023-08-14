@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 @Builder
+@Table(name = "review")
 public class QueryReview {
     @Id
     @Column(name = "review_no")
