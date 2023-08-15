@@ -1,7 +1,7 @@
 package com.sixesSense.recorder.member.command.domain.aggregate.entity;
 
 import com.sixesSense.recorder.common.entity.BaseTimeEntity;
-import com.sixesSense.recorder.member.command.domain.aggregate.entity.EnumType.Role;
+import com.sixesSense.recorder.member.command.domain.aggregate.entity.enumType.RoleEnum;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
@@ -40,16 +40,16 @@ public class Member extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     @Comment("회원 권한")
-    private Role role;
+    private RoleEnum roleEnum;
 
-    public Member(Long id, String name, String nickName, String address, String email, String phoneNum, Role role) {
+    public Member(Long id, String name, String nickName, String address, String email, String phoneNum, RoleEnum roleEnum) {
         this.id = id;
         this.name = name;
         this.nickName = nickName;
         this.address = address;
         this.email = email;
         this.phoneNum = phoneNum;
-        this.role = role;
+        this.roleEnum = roleEnum;
     }
 }
 
