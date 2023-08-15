@@ -1,6 +1,6 @@
 package com.sixesSense.recorder.member.command.domain.aggregate.entity;
 
-import com.sixesSense.recorder.AchievementsDomain.command.domain.common.entity.BaseTimeEntity;
+import com.sixesSense.recorder.common.entity.BaseTimeEntity;
 import com.sixesSense.recorder.member.command.domain.aggregate.entity.EnumType.Role;
 import lombok.*;
 import org.hibernate.annotations.Comment;
