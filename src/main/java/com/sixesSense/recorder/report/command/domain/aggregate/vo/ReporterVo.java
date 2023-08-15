@@ -1,4 +1,4 @@
-package com.sixesSense.recorder.review.command.domain.aggregate.vo;
+package com.sixesSense.recorder.report.command.domain.aggregate.vo;
 
 import lombok.*;
 
@@ -11,7 +11,10 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ReviewWriterVO {
+public class ReporterVo {
+
     @Column(name = "member_no")
-    private Long reviewWriterMemberNo;
+    // 신고자
+    private Long reporter;
+
 }
