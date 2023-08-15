@@ -1,4 +1,4 @@
-package com.sixesSense.recorder.AchievementsDomain.command.domain.common.entity;
+package com.sixesSense.recorder.common.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
