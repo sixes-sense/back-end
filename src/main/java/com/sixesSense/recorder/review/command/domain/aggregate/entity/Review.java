@@ -69,6 +69,15 @@ public class Review {
                 .build();
     }
 
+
+    public void increaseLikesCount() {
+        this.likeCnt += 1;
+    }
+
+    public void decreaseLikesCount() {
+        this.likeCnt = Math.max(0L, this.likeCnt - 1);
+    }
+
     public void updateReview(ReviewDTO updatedReview){
         if(updatedReview.getReviewTitle() != null) {
             this.reviewTitle = updatedReview.getReviewTitle();
