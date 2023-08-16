@@ -2,6 +2,9 @@ package com.sixesSense.recorder.review.command.application.controller;
 
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
+import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.response.CreateReviewResponse;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.ReviewLikes;
@@ -28,14 +31,22 @@ public class CommandReviewController {
 
     @PostMapping("/write")
     @ResponseBody
-    public ResponseEntity<ReviewDTO> writeReview(@RequestBody ReviewDTO reviewDTO){
-        reviewService.reviewSave(reviewDTO);
-        return new ResponseEntity<>(reviewDTO, HttpStatus.OK);
+    public ResponseEntity<CreateReviewResponse> writeReview(@RequestBody CreateReviewRequest createRequest){
+        ReviewDTO createReview = reviewService.reviewSave(createRequest);
+
+        CreateReviewResponse<String> response = new CreateReviewResponse<>();
+
+        response.setSuccess(true);
+        response.setCode(200);
+        response.setMessage("Review created");
+        response.setData(createReview.getReviewTitle());
+
+        return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/{reviewNo}")
     @ResponseBody
-    public ResponseEntity<Long> updateReview(@RequestBody ReviewDTO updatedReviewDTO, @PathVariable Long reviewNo){
+    public ResponseEntity<Long> updateReview(@RequestBody UpdateReviewRequest updatedReviewDTO, @PathVariable Long reviewNo){
         if (!(reviewService.reviewUpdate(updatedReviewDTO))) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }

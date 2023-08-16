@@ -2,6 +2,8 @@ package com.sixesSense.recorder.review.command.application.controller;
 
 import com.sixesSense.recorder.review.command.application.controller.object.TestObjects;
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
+import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
@@ -33,7 +35,7 @@ public class ReviewControllerTests {
     @DisplayName("리뷰 등록 테스트")
     @Test
     void CreateReview() {
-        ReviewDTO review = TestObjects.createContentWithReview();
+        CreateReviewRequest review = TestObjects.createContentWithReview();
 
         Assertions.assertDoesNotThrow(
                 () -> commandReviewService.reviewSave(review)
@@ -63,17 +65,16 @@ public class ReviewControllerTests {
     void UpdateReview(){
         Long reviewNo = 1L;
 
-        ReviewDTO review = TestObjects.createContentWithReview();
+        UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview();
 
         Assertions.assertDoesNotThrow(
-                () -> commandReviewService.reviewUpdate(review)
+                () -> commandReviewService.reviewUpdate(updatingReview)
         );
 
         Review updatedReview = reviewRepository.findByReviewNo(reviewNo);
         Assertions.assertTrue(
-                review.getReviewTitle().equals(updatedReview.getReviewTitle()) &&
-                        review.getReviewContent().equals(updatedReview.getReviewContent()) &&
-                        review.getReviewDate().equals(updatedReview.getReviewDate())
+                updatingReview.getReviewTitle().equals(updatedReview.getReviewTitle()) &&
+                        updatingReview.getReviewContent().equals(updatedReview.getReviewContent())
         );
     }
 

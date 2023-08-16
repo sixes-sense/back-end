@@ -1,7 +1,7 @@
 package com.sixesSense.recorder.review.query.domain.aggregate.entity;
 
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewTagVO;
+import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -39,7 +39,7 @@ public class QueryReview {
     private Long bookMarkCnt;
 
     @Embedded
-    private ReviewTagVO tagNo;
+    private TagVO tagNo;
 
     @Embedded
     private ReviewWriterVO reviewWriter;

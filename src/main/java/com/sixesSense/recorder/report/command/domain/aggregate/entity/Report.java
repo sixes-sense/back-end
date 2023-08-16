@@ -1,8 +1,9 @@
 package com.sixesSense.recorder.report.command.domain.aggregate.entity;
 
-import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReporterVo;
-import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReviewVo;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
+import com.sixesSense.recorder.report.command.domain.aggregate.entity.enumtype.ReportType;
+import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReporterVO;
+import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReviewInfoVO;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,8 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "Report_TB")
 public class Report {
 
     @Id
@@ -25,22 +27,18 @@ public class Report {
     @Column(name = "report_content")
     private String reportContent;
 
-    @Column(name = "report_category")
-    private Integer reportCategory;
-
-    @Column(name = "report_cnt")
-    private Integer reportCnt;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "report_type")
+    private ReportType reportType;
 
     @Column(name = "blind_status")
     private Boolean blindStatus;
 
     @Embedded
-    private ReviewVo reviewVo;
+    private ReviewInfoVO reviewInfoVO;
 
     @Embedded
-    private ReporterVo reporterVo;
+    private ReporterVO reporterVo;
 
-    @Embedded
-    private ReviewWriterVO reviewWriterVO;
 
 }

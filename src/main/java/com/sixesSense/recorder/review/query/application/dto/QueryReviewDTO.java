@@ -1,5 +1,6 @@
 package com.sixesSense.recorder.review.query.application.dto;
 
+import com.sixesSense.recorder.common.entity.BaseTimeEntity;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -9,14 +10,12 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-public class QueryReviewDTO {
+public class QueryReviewDTO extends BaseTimeEntity {
     private Long reviewNo;
 
     private String reviewTitle;
 
     private String reviewContent;
-
-    private LocalDate reviewDate;
 
     private Long likeCnt;
 
@@ -27,4 +26,5 @@ public class QueryReviewDTO {
     private Long tagNo;
 
     private Long reviewWriter;
+
 }
