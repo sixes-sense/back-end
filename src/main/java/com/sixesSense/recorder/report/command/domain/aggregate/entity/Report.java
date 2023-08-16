@@ -1,7 +1,7 @@
 package com.sixesSense.recorder.report.command.domain.aggregate.entity;
 
 import com.sixesSense.recorder.report.command.domain.aggregate.entity.enumtype.ReportType;
-import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReporterVo;
+import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReporterVO;
 import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReviewInfoVO;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -38,7 +38,7 @@ public class Report {
     private ReviewInfoVO reviewInfoVO;
 
     @Embedded
-    private ReporterVo reporterVo;
+    private ReporterVO reporterVo;
 
 
 }

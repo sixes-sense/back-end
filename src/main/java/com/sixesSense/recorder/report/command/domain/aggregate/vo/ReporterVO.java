@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Getter
 @NoArgsConstructor
-public class ReporterVo {
+public class ReporterVO {
 
     @Column(name = "report_member_no")
     // 신고자
