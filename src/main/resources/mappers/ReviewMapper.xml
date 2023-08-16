@@ -8,7 +8,6 @@
         <id property="reviewNo" column="review_no"/>
         <result property="reviewTitle" column="review_title"/>
         <result property="reviewContent" column="review_content"/>
-        <result property="reviewDate" column="review_date"/>
         <result property="likeCnt" column="like_cnt"/>
         <result property="reportCnt" column="report_cnt"/>
         <result property="bookMarkCnt" column="bookMark_cnt"/>

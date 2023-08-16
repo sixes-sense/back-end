@@ -2,9 +2,10 @@ package com.sixesSense.recorder.review.command.application.service;
 
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
+import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.ReviewLikes;
-import com.sixesSense.recorder.review.command.domain.repository.ReviewLikesRepository;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import com.sixesSense.recorder.review.command.domain.service.ReviewService;
 import com.sixesSense.recorder.review.command.infrastructure.service.ReviewValidService;
@@ -20,25 +21,28 @@ public class CommandReviewServiceImpl implements ReviewService {
 
     private final ReviewValidService reviewInvalidService;
 
-    private final ReviewLikesRepository reviewLikesRepository;
-
     @Override
     @Transactional
-    public void reviewSave(ReviewDTO reviewDTO) {
-        Review review = Review.toEntity(reviewDTO);
-        reviewRepository.save(review);
+    public ReviewDTO reviewSave(CreateReviewRequest createReviewRequest) {
+        /* createReviewRequest -> entity 변환 후 저장, 다시 dto로 변환 후 리턴 */
+        Review review = Review.toEntity(createReviewRequest);
+        Review createdReview = reviewRepository.save(review);
+        ReviewDTO reviewDTO = ReviewDTO.toReviewDTO(createdReview);
+
+        return reviewDTO;
     }
 
-    @Override
+
+
     @Transactional
-    public boolean reviewUpdate(ReviewDTO updatedReview) {
-        Review review = reviewRepository.findByReviewNo(updatedReview.getReviewNo());
+    public boolean reviewUpdate(UpdateReviewRequest updatingReview) {
+        Review review = reviewRepository.findByReviewNo(updatingReview.getReviewNo());
 
         if(review == null){
             return false;
         }
 
-        review.updateReview(updatedReview);
+        review.updateReview(updatingReview);
         return true;
     }
 

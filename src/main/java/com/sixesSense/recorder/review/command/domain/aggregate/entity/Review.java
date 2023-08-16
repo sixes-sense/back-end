@@ -1,6 +1,9 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
+import com.sixesSense.recorder.common.entity.BaseTimeEntity;
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
+import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.*;
@@ -14,7 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Review {
+public class Review extends BaseTimeEntity {
 
     @Id
     @Column(name = "review_no")
@@ -26,9 +29,6 @@ public class Review {
 
     @Column(name = "review_content")
     private String reviewContent;
-
-    @Column(name = "review_date")
-    private LocalDate reviewDate;
 
     @Column(name = "like_cnt")
     private Long likeCnt;
@@ -48,7 +48,6 @@ public class Review {
     public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, TagVO tagNo, ReviewWriterVO reviewWriter) {
         this.reviewTitle = reviewTitle;
         this.reviewContent = reviewContent;
-        this.reviewDate = reviewDate;
         this.likeCnt = likeCnt;
         this.reportCnt = reportCnt;
         this.bookMarkCnt = bookMarkCnt;
@@ -56,11 +55,10 @@ public class Review {
         this.reviewWriter = reviewWriter;
     }
 
-    public static Review toEntity(ReviewDTO reviewDTO){
+    public static Review toEntity(CreateReviewRequest reviewDTO){
         return Review.builder()
                 .reviewTitle(reviewDTO.getReviewTitle())
                 .reviewContent(reviewDTO.getReviewContent())
-                .reviewDate(reviewDTO.getReviewDate())
                 .likeCnt(reviewDTO.getLikeCnt())
                 .reportCnt(reviewDTO.getReportCnt())
                 .bookMarkCnt(reviewDTO.getBookMarkCnt())
@@ -78,17 +76,13 @@ public class Review {
         this.likeCnt = Math.max(0L, this.likeCnt - 1);
     }
 
-    public void updateReview(ReviewDTO updatedReview){
+    public void updateReview(UpdateReviewRequest updatedReview){
         if(updatedReview.getReviewTitle() != null) {
             this.reviewTitle = updatedReview.getReviewTitle();
         }
 
         if(updatedReview.getReviewContent() != null){
             this.reviewContent = updatedReview.getReviewContent();
-        }
-
-        if(updatedReview.getReviewDate() != LocalDate.now()){
-            this.reviewDate = updatedReview.getReviewDate();
         }
     }
 }

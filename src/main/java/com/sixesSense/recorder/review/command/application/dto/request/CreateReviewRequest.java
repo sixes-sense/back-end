@@ -1,9 +1,8 @@
-package com.sixesSense.recorder.review.command.application.dto;
+package com.sixesSense.recorder.review.command.application.dto.request;
 
+import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import lombok.*;
-
-import java.time.LocalDate;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -11,14 +10,10 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Builder
-public class ReviewDTO {
-    private Long reviewNo;
-
+public class CreateReviewRequest {
     private String reviewTitle;
 
     private String reviewContent;
-
-    private LocalDate reviewDate;
 
     private Long likeCnt;
 
@@ -30,7 +25,7 @@ public class ReviewDTO {
 
     private Long reviewWriter;
 
-    public static ReviewDTO toReviewDTO(Review review) {
+    public ReviewDTO toReviewDTO(Review review) {
         return ReviewDTO.builder()
                 .reviewTitle(review.getReviewTitle())
                 .reviewContent(review.getReviewContent())

@@ -1,16 +1,12 @@
-package com.sixesSense.recorder.review.query.application.dto;
+package com.sixesSense.recorder.review.query.application.dto.request;
 
 import com.sixesSense.recorder.common.entity.BaseTimeEntity;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDate;
-
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Getter
 @Setter
-@ToString
-public class QueryReviewDTO extends BaseTimeEntity {
+public class ReadReviewRequest extends BaseTimeEntity {
     private Long reviewNo;
 
     private String reviewTitle;
@@ -26,5 +22,4 @@ public class QueryReviewDTO extends BaseTimeEntity {
     private Long tagNo;
 
     private Long reviewWriter;
-
 }

@@ -3,12 +3,14 @@ package com.sixesSense.recorder.review.command.domain.service;
 
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
+import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
 
 public interface ReviewService {
 
-    void reviewSave(ReviewDTO review);
+    ReviewDTO reviewSave(CreateReviewRequest reviewDTO);
 
-    boolean reviewUpdate(ReviewDTO updatedReview);
+    boolean reviewUpdate(UpdateReviewRequest updatedReview);
 
     void reviewDelete(Long reviewNo);
 
