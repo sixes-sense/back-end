@@ -7,10 +7,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 @Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class ReporterVo {
 
     @Column(name = "report_member_no")

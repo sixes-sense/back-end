@@ -9,10 +9,7 @@ import javax.persistence.Embedded;
 
 @Embeddable
 @Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class ReviewInfoVO {
 
     @Column(name = "review_title")
