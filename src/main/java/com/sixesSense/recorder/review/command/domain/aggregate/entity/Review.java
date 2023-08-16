@@ -2,7 +2,7 @@ package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
 import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
+import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewTagVO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -40,12 +40,12 @@ public class Review {
     private Long bookMarkCnt;
 
     @Embedded
-    private TagVO tagNo;
+    private ReviewTagVO tagNo;
 
     @Embedded
     private ReviewWriterVO reviewWriter;
 
-    public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, TagVO tagNo, ReviewWriterVO reviewWriter) {
+    public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, ReviewTagVO tagNo, ReviewWriterVO reviewWriter) {
         this.reviewTitle = reviewTitle;
         this.reviewContent = reviewContent;
         this.reviewDate = reviewDate;
@@ -64,7 +64,7 @@ public class Review {
                 .likeCnt(reviewDTO.getLikeCnt())
                 .reportCnt(reviewDTO.getReportCnt())
                 .bookMarkCnt(reviewDTO.getBookMarkCnt())
-                .tagNo(new TagVO(reviewDTO.getTagNo()))
+                .tagNo(new ReviewTagVO(reviewDTO.getTagNo()))
                 .reviewWriter(new ReviewWriterVO(reviewDTO.getReviewWriter()))
                 .build();
     }

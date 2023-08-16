@@ -1,9 +1,6 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
 import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.*;
 
 import javax.persistence.*;
