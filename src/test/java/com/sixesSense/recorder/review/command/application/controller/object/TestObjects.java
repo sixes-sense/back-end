@@ -1,15 +1,11 @@
 package com.sixesSense.recorder.review.command.application.controller.object;
 
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
-import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
-import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
-import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
-import org.apache.commons.lang3.tuple.Pair;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestComponent;
+import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
+
+import java.util.Optional;
 
 
 public class TestObjects {
@@ -26,11 +22,11 @@ public class TestObjects {
                 .build();
     }
 
-    public static UpdateReviewRequest updateContentWithReview(){
+    public static UpdateReviewRequest updateContentWithReview(ReadReviewResponse review, Optional<String> title, Optional<String> content){
         return UpdateReviewRequest.builder()
-                .reviewNo(1L)
-                .reviewTitle("테스트 제목")
-                .reviewContent("테스트 내용")
+                .reviewNo(review.getReviewNo())
+                .reviewTitle(title.orElse(review.getReviewTitle()))
+                .reviewContent(content.orElse(review.getReviewContent()))
                 .build();
     }
 

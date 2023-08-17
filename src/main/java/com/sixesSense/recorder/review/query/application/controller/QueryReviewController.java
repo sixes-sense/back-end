@@ -1,7 +1,6 @@
 package com.sixesSense.recorder.review.query.application.controller;
 
 
-import com.sixesSense.recorder.review.query.application.dto.QueryReviewDTO;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 import com.sixesSense.recorder.review.query.application.service.QueryReviewServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -22,35 +21,17 @@ public class QueryReviewController {
 
     @GetMapping
     @ResponseBody
-    public ResponseEntity<ReadReviewResponse> reviewLists(@PageableDefault(sort = "review_no", direction = Sort.Direction.DESC) Pageable pageable){
-        Page<QueryReviewDTO> reviewPages = queryReviewService.getReviews(pageable);
+    public ResponseEntity<Page<ReadReviewResponse>> reviewLists(@PageableDefault(sort = "review_no", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<ReadReviewResponse> readReviewResponses = queryReviewService.getReviews(pageable);
 
-        ReadReviewResponse<Long> response = new ReadReviewResponse();
-
-        response.setSuccess(true);
-        response.setCode(200);
-        response.setMessage("Review all selected");
-        response.setData(reviewPages.getTotalElements());
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(readReviewResponses);
     }
 
     @GetMapping("/{reviewNo}")
     @ResponseBody
     public ResponseEntity<ReadReviewResponse> reviewDetail(@PathVariable Long reviewNo){
-        QueryReviewDTO reviewDetail = queryReviewService.getReviewDetail(reviewNo);
+        ReadReviewResponse readReviewResponse = queryReviewService.getReviewDetail(reviewNo);
 
-        if(reviewDetail == null){
-            return ResponseEntity.notFound().build();
-        }
-
-        ReadReviewResponse<Long> response = new ReadReviewResponse();
-
-        response.setSuccess(true);
-        response.setCode(200);
-        response.setMessage("Review all selected");
-        response.setData(reviewDetail.getReviewNo());
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(readReviewResponse);
     }
 }

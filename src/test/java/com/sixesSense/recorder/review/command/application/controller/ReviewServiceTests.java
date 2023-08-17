@@ -11,7 +11,7 @@ import com.sixesSense.recorder.review.command.application.dto.review.response.Up
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
-import com.sixesSense.recorder.review.query.application.dto.QueryReviewDTO;
+import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +21,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 
 @SpringBootTest
@@ -49,7 +50,7 @@ public class ReviewServiceTests {
     @DisplayName("리뷰 전체 조회 테스트")
     @Test
     void ReadReviews() {
-        List<QueryReviewDTO> reviewDTOList = reviewMapper.reviewLists();
+        List<ReadReviewResponse> reviewDTOList = reviewMapper.reviewLists();
 
         Assertions.assertNotNull(reviewDTOList);
     }
@@ -59,15 +60,18 @@ public class ReviewServiceTests {
     void ReadReviewByReviewNo() {
         Long reviewNo = 1L;
 
-        QueryReviewDTO review = reviewMapper.reviewListByReviewNo(reviewNo);
+        ReadReviewResponse review = reviewMapper.reviewListByReviewNo(reviewNo);
 
         Assertions.assertNotNull(review);
     }
 
-    @DisplayName("리뷰 수정")
+    @DisplayName("리뷰 제목만 수정")
     @Test
-    void UpdateReview(){
-        UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview();
+    void UpdateReviewWithTitle(){
+        ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
+        UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
+                Optional.of("제목 업데이트"),
+                Optional.empty());
 
         UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview);
 
@@ -77,7 +81,39 @@ public class ReviewServiceTests {
         );
     }
 
-    @DisplayName("리뷰 삭제")
+    @DisplayName("리뷰 내용만 수정")
+    @Test
+    void UpdateReviewWithContent(){
+        ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
+        UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
+                Optional.empty(),
+                Optional.of("내용 업데이트"));
+
+        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview);
+
+        Assertions.assertTrue(
+                updatingReview.getReviewTitle().equals(updateReviewResponse.getReviewTitle()) &&
+                        updatingReview.getReviewContent().equals(updateReviewResponse.getReviewContent())
+        );
+    }
+
+    @DisplayName("리뷰 둘다 수정")
+    @Test
+    void UpdateReviewAll(){
+        ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
+        UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
+                Optional.of("제목 업데이트"),
+                Optional.of("내용 업데이트"));
+
+        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview);
+
+        Assertions.assertTrue(
+                updatingReview.getReviewTitle().equals(updateReviewResponse.getReviewTitle()) &&
+                        updatingReview.getReviewContent().equals(updateReviewResponse.getReviewContent())
+        );
+    }
+
+    @DisplayName("리뷰 삭제 확인")
     @Test
     void DeleteReview(){
         Long reviewNo = 1L;
