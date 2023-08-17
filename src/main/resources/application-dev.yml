@@ -1,11 +1,11 @@
 spring:
     config:
-        import: "optional:configserver:http://localhost:8888/"
+        import: ${aws-connection.url}
     datasource:
-        driver-class-name: ${connection.driver}
-        url: ${connection.url}
-        username: ${connection.username}
-        password: ${connection.password}
+        driver-class-name: ${db-connection.driver}
+        url: ${db-connection.url}
+        username: ${db-connection.username}
+        password: ${db-connection.password}
         hikari:
             auto-commit: true
     jpa:
