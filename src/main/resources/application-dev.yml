@@ -1,6 +1,6 @@
 spring:
     config:
-        import: ${aws-connection.url}
+        import: "optional:configserver:http://3.129.125.36:80/"
     datasource:
         driver-class-name: ${db-connection.driver}
         url: ${db-connection.url}
