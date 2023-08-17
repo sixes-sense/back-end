@@ -1,9 +1,8 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
 import com.sixesSense.recorder.common.entity.BaseTimeEntity;
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
-import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
-import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.*;
@@ -76,13 +75,14 @@ public class Review extends BaseTimeEntity {
         this.likeCnt = Math.max(0L, this.likeCnt - 1);
     }
 
-    public void updateReview(UpdateReviewRequest updatedReview){
-        if(updatedReview.getReviewTitle() != null) {
-            this.reviewTitle = updatedReview.getReviewTitle();
+    public void updateReview(UpdateReviewRequest updatingReview){
+        if(updatingReview.getReviewTitle() != null) {
+            this.reviewTitle = updatingReview.getReviewTitle();
         }
 
-        if(updatedReview.getReviewContent() != null){
-            this.reviewContent = updatedReview.getReviewContent();
+        if(updatingReview.getReviewContent() != null){
+            this.reviewContent = updatingReview.getReviewContent();
         }
     }
+
 }

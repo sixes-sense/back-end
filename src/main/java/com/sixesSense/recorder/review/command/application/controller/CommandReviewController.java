@@ -1,20 +1,17 @@
 package com.sixesSense.recorder.review.command.application.controller;
 
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
-import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
-import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
-import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
-import com.sixesSense.recorder.review.command.application.dto.response.CreateReviewResponse;
+
+import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
+import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
+import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
+import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.ReviewLikes;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @Controller
@@ -32,46 +29,28 @@ public class CommandReviewController {
     @PostMapping("/write")
     @ResponseBody
     public ResponseEntity<CreateReviewResponse> writeReview(@RequestBody CreateReviewRequest createRequest){
-        ReviewDTO createReview = reviewService.reviewSave(createRequest);
-
-        CreateReviewResponse<String> response = new CreateReviewResponse<>();
-
-        response.setSuccess(true);
-        response.setCode(200);
-        response.setMessage("Review created");
-        response.setData(createReview.getReviewTitle());
-
-        return ResponseEntity.ok(response);
+        CreateReviewResponse createReviewResponse = reviewService.reviewSave(createRequest);
+        return ResponseEntity.ok(createReviewResponse);
     }
 
     @PatchMapping("/{reviewNo}")
     @ResponseBody
-    public ResponseEntity<Long> updateReview(@RequestBody UpdateReviewRequest updatedReviewDTO, @PathVariable Long reviewNo){
-        if (!(reviewService.reviewUpdate(updatedReviewDTO))) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-        return ResponseEntity.ok(reviewNo);
+    public ResponseEntity<UpdateReviewResponse> updateReview(@RequestBody UpdateReviewRequest updatedReviewDTO){
+        UpdateReviewResponse updateReviewResponse = reviewService.reviewUpdate(updatedReviewDTO);
+        return ResponseEntity.ok(updateReviewResponse);
     }
 
     @DeleteMapping("/{reviewNo}")
     @ResponseBody
-    public ResponseEntity<Long> deleteReview(@PathVariable Long reviewNo){
+    public ResponseEntity<String> deleteReview(@PathVariable Long reviewNo){
         reviewService.reviewDelete(reviewNo);
-        return ResponseEntity.ok(reviewNo);
+        return ResponseEntity.ok("Review has been deleted successfully");
     }
 
     @PostMapping("/{reviewNo}/like")
     @ResponseBody
-    public ResponseEntity<ReviewLikesDTO> postLike(@PathVariable Long reviewNo, @RequestBody ReviewLikesDTO clickLikesDTO){
-        ReviewLikesDTO reviewLikes = reviewService.countLike(reviewNo, clickLikesDTO);
-        return ResponseEntity.ok(reviewLikes);
+    public ResponseEntity<PostLikeResponse> postLike(@PathVariable Long reviewNo, @RequestBody PostLikeRequest postLikeRequest){
+        PostLikeResponse postLikeResponse = reviewService.countLike(reviewNo, postLikeRequest);
+        return ResponseEntity.ok(postLikeResponse);
     }
-
-//    @DeleteMapping("/{reviewNo}/like")
-//    @ResponseBody
-//    public ResponseEntity<ReviewLikesDTO> deleteLike(@PathVariable Long reviewNo, @RequestBody ReviewLikesDTO clickedLikesDTO){
-//        ReviewLikesDTO reviewLikesDTO = reviewService.minusLike(reviewNo, clickedLikesDTO);
-//        return ResponseEntity.ok(reviewLikesDTO);
-//    }
-
 }

@@ -1,11 +1,9 @@
 package com.sixesSense.recorder.review.query.application.controller;
 
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
+
 import com.sixesSense.recorder.review.query.application.dto.QueryReviewDTO;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 import com.sixesSense.recorder.review.query.application.service.QueryReviewServiceImpl;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
