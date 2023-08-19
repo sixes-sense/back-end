@@ -2,7 +2,6 @@ package com.sixesSense.recorder.config.security;
 
 import com.sixesSense.recorder.member.command.domain.aggregate.entity.Member;
 import com.sixesSense.recorder.member.command.domain.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -13,7 +12,6 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
@@ -47,6 +45,13 @@ public class OAuthService implements OAuth2UserService<OAuth2UserRequest, OAuth2
         // registrationId에 따라 유저 정보를 통해 공통된 UserProfile 객체로 만들어줌
         UserProfile userProfile = OAuthAttributes.extract(registrationId, attributes);
 
+        // userProfile에 email이 없다면 Error 처리
+        try {
+            emailExistenceValidation(userProfile);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         Member member = saveOrUpdate(userProfile);
 
         return new DefaultOAuth2User(
@@ -62,5 +67,10 @@ public class OAuthService implements OAuth2UserService<OAuth2UserRequest, OAuth2
                 //없을경우 userProfile 정보로 Member 객체를 생성
                 .orElse(userProfile.toMember());
         return memberRepository.save(member);
+    }
+    private void emailExistenceValidation(UserProfile userProfile) throws Exception {
+        if(userProfile.getEmail().isEmpty()){
+            throw new Exception("이메일이 없습니다.");
+        }
     }
 }
