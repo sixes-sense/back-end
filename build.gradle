@@ -46,9 +46,10 @@ dependencies {
 
     //swagger
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.7.0'
-
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
 //    testImplementation 'org.springframework.security:spring-security-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
     //mysql
     implementation 'mysql:mysql-connector-java:8.0.25'

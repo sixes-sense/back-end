@@ -16,6 +16,7 @@ spring:
     web:
       resources:
         static-locations: file:src/main/resources/static/
+    include: oauth
 mybatis:
   mapper-locations: mappers/**/*.xml
 
