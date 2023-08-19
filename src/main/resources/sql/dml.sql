@@ -18,3 +18,7 @@ VALUES(1, '매실 못먹음', '컴프즈 문닫음', 0,0,0,1,1),
 INSERT INTO review_likes(like_no, is_liked, member_no, review_no)
 VALUES (1, False, 1, 15),
        (2, true, 2, 15);
+
+insert into comment(comment_no, comment_content, member_no, review_no)
+values (1, '댓글 1', 1, 1),
+       (2, '댓글 2', 2, 1)

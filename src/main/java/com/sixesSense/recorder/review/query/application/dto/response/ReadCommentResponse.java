@@ -8,9 +8,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class ReadCommentResponse {
-    private Long review_no;
-
-    private Long member_no;
+    private Long memberNo;
 
     private String commentContent;
 }

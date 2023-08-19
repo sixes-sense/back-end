@@ -1,5 +1,6 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
+import com.sixesSense.recorder.common.entity.BaseTimeEntity;
 import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @ToString(exclude = "review")
 @Builder
-public class Comment {
+public class Comment extends BaseTimeEntity {
     @Id
     @Column(name = "comment_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

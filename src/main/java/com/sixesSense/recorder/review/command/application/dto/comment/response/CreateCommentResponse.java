@@ -13,16 +13,16 @@ import lombok.ToString;
 @Builder
 @ToString
 public class CreateCommentResponse {
-    private Long review_no;
+    private Long reviewNo;
 
-    private Long member_no;
+    private Long memberNo;
 
     private String commentContent;
 
     public static CreateCommentResponse fromEntity(Comment comment) {
         return CreateCommentResponse.builder()
-                .review_no(comment.getCommentNo())
-                .member_no(comment.getMemberNo())
+                .reviewNo(comment.getReview().getReviewNo())
+                .memberNo(comment.getMemberNo())
                 .commentContent(comment.getCommentContent())
                 .build();
     }
