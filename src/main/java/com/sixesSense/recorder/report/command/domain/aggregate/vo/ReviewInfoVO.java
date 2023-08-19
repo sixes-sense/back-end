@@ -22,4 +22,9 @@ public class ReviewInfoVO {
     @Column(name = "review_writer")
     //리뷰 작성자
     private ReviewWriterVO reviewWriter;
+
+    public ReviewInfoVO(Long reviewNo) {
+        this.reviewNo = reviewNo;
+    }
+
 }

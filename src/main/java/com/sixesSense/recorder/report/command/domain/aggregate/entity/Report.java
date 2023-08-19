@@ -1,5 +1,6 @@
 package com.sixesSense.recorder.report.command.domain.aggregate.entity;
 
+import com.sixesSense.recorder.report.command.application.dto.request.CreateReportRequest;
 import com.sixesSense.recorder.report.command.domain.aggregate.entity.enumtype.ReportType;
 import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReporterVO;
 import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReviewInfoVO;
@@ -39,6 +40,15 @@ public class Report {
 
     @Embedded
     private ReporterVO reporterVo;
+
+
+    public static Report toEntity(CreateReportRequest createReportRequest) {
+        return Report.builder()
+                .reportType(createReportRequest.getReportType())
+                .reportContent(createReportRequest.getReportContent())
+                .reviewInfoVO(new ReviewInfoVO(createReportRequest.getReviewNo()))
+                .build();
+    }
 
 
 }
