@@ -12,7 +12,7 @@ public interface ReviewService {
 
     CreateReviewResponse reviewSave(CreateReviewRequest reviewDTO);
 
-    UpdateReviewResponse reviewUpdate(UpdateReviewRequest updatedReview);
+    UpdateReviewResponse reviewUpdate(UpdateReviewRequest updateReviewRequest, Long reviewNo);
 
     void reviewDelete(Long reviewNo);
 

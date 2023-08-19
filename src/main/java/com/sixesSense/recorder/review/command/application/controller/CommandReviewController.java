@@ -35,8 +35,8 @@ public class CommandReviewController {
 
     @PatchMapping("/{reviewNo}")
     @ResponseBody
-    public ResponseEntity<UpdateReviewResponse> updateReview(@RequestBody UpdateReviewRequest updatedReviewDTO, @PathVariable Long reviewNo){
-        UpdateReviewResponse updateReviewResponse = reviewService.reviewUpdate(updatedReviewDTO);
+    public ResponseEntity<UpdateReviewResponse> updateReview(@RequestBody UpdateReviewRequest updateReviewRequest, @PathVariable Long reviewNo){
+        UpdateReviewResponse updateReviewResponse = reviewService.reviewUpdate(updateReviewRequest, reviewNo);
         return ResponseEntity.ok(updateReviewResponse);
     }
 

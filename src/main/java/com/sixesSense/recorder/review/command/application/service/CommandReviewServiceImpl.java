@@ -1,13 +1,11 @@
 package com.sixesSense.recorder.review.command.application.service;
 
-import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.ReviewLikes;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
@@ -39,16 +37,11 @@ public class CommandReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public UpdateReviewResponse reviewUpdate(UpdateReviewRequest updateReviewRequest) {
-        Review review = reviewRepository.findByReviewNo(updateReviewRequest.getReviewNo());
-
-//        if(review == null){
-//            UpdateReviewResponse updateReviewResponse =
-//        }
+    public UpdateReviewResponse reviewUpdate(UpdateReviewRequest updateReviewRequest, Long reviewNo) {
+        Review review = reviewRepository.findByReviewNo(reviewNo);
 
         review.updateReview(updateReviewRequest);
-        Review updatedReview = reviewRepository.findByReviewNo(updateReviewRequest.getReviewNo());
-        UpdateReviewResponse updateReviewResponse = UpdateReviewResponse.toUpdateResponse(updatedReview);
+        UpdateReviewResponse updateReviewResponse = UpdateReviewResponse.toUpdateResponse(review);
 
         return updateReviewResponse;
     }

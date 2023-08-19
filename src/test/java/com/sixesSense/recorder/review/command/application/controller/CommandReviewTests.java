@@ -2,22 +2,16 @@ package com.sixesSense.recorder.review.command.application.controller;
 
 
 import com.sixesSense.recorder.review.command.application.controller.object.TestObjects;
-import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
-import com.sixesSense.recorder.review.command.application.dto.comment.response.CreateCommentResponse;
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
-import com.sixesSense.recorder.review.command.application.service.CommandCommentServiceImpl;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
-import com.sixesSense.recorder.review.command.domain.repository.CommentRepository;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
-import com.sixesSense.recorder.review.query.application.service.QueryReviewServiceImpl;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -77,12 +71,13 @@ public class CommandReviewTests {
     @DisplayName("리뷰 제목만 수정")
     @Test
     void UpdateReviewWithTitle(){
+        Long reviewNo = 1L;
         ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
         UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
                 Optional.of("제목 업데이트"),
                 Optional.empty());
 
-        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview);
+        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview, reviewNo);
 
         Assertions.assertTrue(
                 updatingReview.getReviewTitle().equals(updateReviewResponse.getReviewTitle()) &&
@@ -93,12 +88,13 @@ public class CommandReviewTests {
     @DisplayName("리뷰 내용만 수정")
     @Test
     void UpdateReviewWithContent(){
+        Long reviewNo = 1L;
         ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
         UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
                 Optional.empty(),
                 Optional.of("내용 업데이트"));
 
-        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview);
+        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview, reviewNo);
 
         Assertions.assertTrue(
                 updatingReview.getReviewTitle().equals(updateReviewResponse.getReviewTitle()) &&
@@ -109,12 +105,13 @@ public class CommandReviewTests {
     @DisplayName("리뷰 둘다 수정")
     @Test
     void UpdateReviewAll(){
+        Long reviewNo = 1L;
         ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
         UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
                 Optional.of("제목 업데이트"),
                 Optional.of("내용 업데이트"));
 
-        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview);
+        UpdateReviewResponse updateReviewResponse = commandReviewService.reviewUpdate(updatingReview, reviewNo);
 
         Assertions.assertTrue(
                 updatingReview.getReviewTitle().equals(updateReviewResponse.getReviewTitle()) &&
