@@ -22,8 +22,6 @@ public class CreateReportResponse {
 
     private Long reviewNo;
 
-    private Long reporter;
-
     public static CreateReportResponse fromReport(Report report) {
         ReportType reportType = report.getReportType();
 
@@ -33,7 +31,6 @@ public class CreateReportResponse {
                 .reportContent(report.getReportContent())
                 .reportDate(report.getReportDate())
                 .reviewNo(report.getReviewInfoVO().getReviewNo())
-                .reporter(report.getReporterVo() != null ? report.getReporterVo().getReporter() : null)
                 .build();
     }
 }
