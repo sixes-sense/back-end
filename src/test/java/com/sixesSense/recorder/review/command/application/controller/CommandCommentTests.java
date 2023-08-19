@@ -5,10 +5,14 @@ import com.sixesSense.recorder.review.command.application.dto.comment.request.Cr
 import com.sixesSense.recorder.review.command.application.dto.comment.response.CreateCommentResponse;
 import com.sixesSense.recorder.review.command.application.dto.comment.response.UpdateCommentResponse;
 import com.sixesSense.recorder.review.command.application.service.CommandCommentServiceImpl;
+import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.repository.CommentRepository;
+import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadCommentResponse;
 import com.sixesSense.recorder.review.query.application.service.QueryCommentServiceImpl;
+import com.sixesSense.recorder.review.query.domain.repository.CommentMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,6 +23,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -28,12 +34,20 @@ public class CommandCommentTests {
     @Autowired
     private CommandCommentServiceImpl commandCommentService;
 
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Autowired
     private QueryCommentServiceImpl queryCommentService;
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Autowired
+    private CommandReviewServiceImpl commandReviewService;
+
+    @Autowired
+    private CommentMapper commentMapper;
 
     @DisplayName("댓글 작성 확인")
     @Test
@@ -86,5 +100,20 @@ public class CommandCommentTests {
 
         Comment comment = commentRepository.findByReviewReviewNoAndMemberNo(reviewNo, memberNo);
         assertNull(comment);
+    }
+
+    @DisplayName("리뷰 삭제시 댓글도 삭제 되는지")
+    @Test
+    void deleteAllCommentIfDeleteReview(){
+        Long reviewNo = 1L;
+
+
+        assertDoesNotThrow(
+                () -> commandReviewService.reviewDelete(reviewNo)
+        );
+        reviewRepository.findByReviewNo(reviewNo);
+
+        List<ReadCommentResponse> readCommentResponses = commentMapper.commentList(reviewNo);
+        assertTrue(readCommentResponses.isEmpty(), "삭제 후에도 값이 존재합니다.");
     }
 }

@@ -49,7 +49,7 @@ public class CommandReviewServiceImpl implements ReviewService {
     @Override
     @Transactional
     public void reviewDelete(Long reviewNo) {
-        reviewRepository.deleteByReviewNo(reviewNo);
+        reviewRepository.deleteById(reviewNo);
     }
 
     @Override

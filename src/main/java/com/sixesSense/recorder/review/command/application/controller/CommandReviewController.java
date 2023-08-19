@@ -53,4 +53,5 @@ public class CommandReviewController {
         PostLikeResponse postLikeResponse = reviewService.countLike(reviewNo, postLikeRequest);
         return ResponseEntity.ok(postLikeResponse);
     }
+
 }

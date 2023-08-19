@@ -7,6 +7,7 @@ import com.sixesSense.recorder.review.command.application.dto.review.request.Cre
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 
 public interface ReviewService {
 
