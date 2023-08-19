@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@ToString
+@ToString(exclude = "review")
 @Builder
 public class Comment {
     @Id
@@ -20,17 +20,18 @@ public class Comment {
     @Column(name = "comment_content")
     private String commentContent;
 
-    @Column(name = "review_no")
-    private Long review_no;
+    @ManyToOne
+    @JoinColumn(name = "review_no")
+    private Review review;
 
     @Column(name = "member_no")
-    private Long member_no;
+    private Long memberNo;
 
 
-    public static Comment toEntity(CreateCommentRequest createCommentRequest) {
+    public static Comment toEntity(CreateCommentRequest createCommentRequest, Review review) {
         return Comment.builder()
-                .member_no(createCommentRequest.getMember_no())
-                .review_no(createCommentRequest.getReview_no())
+                .memberNo(createCommentRequest.getMemberNo())
+                .review(review)
                 .commentContent(createCommentRequest.getCommentContent())
                 .build();
     }

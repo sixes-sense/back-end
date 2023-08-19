@@ -10,9 +10,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class CreateCommentRequest {
-    private Long review_no;
-
-    private Long member_no;
+    private Long memberNo;
 
     private String commentContent;
 }

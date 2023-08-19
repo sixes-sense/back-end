@@ -19,11 +19,11 @@ public class CreateCommentResponse {
 
     private String commentContent;
 
-    public static CreateCommentResponse fromEntity(Comment createdComment) {
+    public static CreateCommentResponse fromEntity(Comment comment) {
         return CreateCommentResponse.builder()
-                .review_no(createdComment.getReview_no())
-                .member_no(createdComment.getMember_no())
-                .commentContent(createdComment.getCommentContent())
+                .review_no(comment.getCommentNo())
+                .member_no(comment.getMemberNo())
+                .commentContent(comment.getCommentContent())
                 .build();
     }
 }

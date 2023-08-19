@@ -12,6 +12,6 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @ToString
 public class ReviewWriterVO {
-    @Column(name = "review_member_no")
+    @Column(name = "member_no")
     private Long reviewWriterMemberNo;
 }

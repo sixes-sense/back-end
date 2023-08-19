@@ -38,13 +38,12 @@ public class CommandReviewTests {
     private CommandReviewServiceImpl commandReviewService;
 
     @Autowired
-    private CommandCommentServiceImpl commandCommentService;
-
-    @Autowired
     private ReviewRepository reviewRepository;
 
     @Autowired
     private ReviewMapper reviewMapper;
+
+
 
 
     @DisplayName("리뷰 등록 테스트")
@@ -166,16 +165,4 @@ public class CommandReviewTests {
         Assertions.assertFalse(postLikeResponse.getIsLiked());
         Assertions.assertEquals(beforeLike, afterLike);
     }
-
-//    @DisplayName("댓글 작성 확인")
-//    @Test
-//    void CreateComment(){
-//        CreateCommentRequest createCommentRequest = TestObjects.createComment();
-//
-//        CreateCommentResponse comment = commandCommentService.createComment(createCommentRequest);
-//
-//        Assertions.assertNotNull(comment);
-//    }
-
-
 }

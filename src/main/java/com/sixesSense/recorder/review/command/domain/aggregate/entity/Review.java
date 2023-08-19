@@ -3,12 +3,13 @@ package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 import com.sixesSense.recorder.common.entity.BaseTimeEntity;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewTagVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,23 +40,13 @@ public class Review extends BaseTimeEntity {
     private Long bookMarkCnt;
 
     @Embedded
-    private TagVO tagNo;
+    private ReviewTagVO tagNo;
 
     @Embedded
     private ReviewWriterVO reviewWriter;
 
-    @OneToMany
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
-
-    public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, TagVO tagNo, ReviewWriterVO reviewWriter) {
-        this.reviewTitle = reviewTitle;
-        this.reviewContent = reviewContent;
-        this.likeCnt = likeCnt;
-        this.reportCnt = reportCnt;
-        this.bookMarkCnt = bookMarkCnt;
-        this.tagNo = tagNo;
-        this.reviewWriter = reviewWriter;
-    }
 
     public static Review toEntity(CreateReviewRequest createReviewRequest){
         return Review.builder()
@@ -64,7 +55,7 @@ public class Review extends BaseTimeEntity {
                 .likeCnt(0l)
                 .reportCnt(0l)
                 .bookMarkCnt(0l)
-                .tagNo(new TagVO(createReviewRequest.getTagNo()))
+                .tagNo(new ReviewTagVO(createReviewRequest.getTagNo()))
                 .reviewWriter(new ReviewWriterVO(createReviewRequest.getReviewWriter()))
                 .build();
     }

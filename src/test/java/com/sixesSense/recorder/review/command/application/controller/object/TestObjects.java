@@ -38,8 +38,7 @@ public class TestObjects {
 
     public static CreateCommentRequest createComment(){
         return CreateCommentRequest.builder()
-                .review_no(1l)
-                .member_no(1l)
+                .memberNo(1l)
                 .commentContent("테스트 댓글 내용")
                 .build();
     }

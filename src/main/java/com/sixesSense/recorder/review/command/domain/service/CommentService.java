@@ -4,5 +4,5 @@ import com.sixesSense.recorder.review.command.application.dto.comment.request.Cr
 import com.sixesSense.recorder.review.command.application.dto.comment.response.CreateCommentResponse;
 
 public interface CommentService {
-    CreateCommentResponse createComment(CreateCommentRequest createCommentRequest);
+    CreateCommentResponse createComment(CreateCommentRequest createCommentRequest, Long reviewNo);
 }
