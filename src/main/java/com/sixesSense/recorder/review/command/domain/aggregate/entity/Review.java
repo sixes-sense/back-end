@@ -9,6 +9,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -44,6 +45,9 @@ public class Review extends BaseTimeEntity {
     @Embedded
     private ReviewWriterVO reviewWriter;
 
+    @OneToMany
+    private List<Comment> comments;
+
     public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, TagVO tagNo, ReviewWriterVO reviewWriter) {
         this.reviewTitle = reviewTitle;
         this.reviewContent = reviewContent;
@@ -54,15 +58,15 @@ public class Review extends BaseTimeEntity {
         this.reviewWriter = reviewWriter;
     }
 
-    public static Review toEntity(CreateReviewRequest reviewDTO){
+    public static Review toEntity(CreateReviewRequest createReviewRequest){
         return Review.builder()
-                .reviewTitle(reviewDTO.getReviewTitle())
-                .reviewContent(reviewDTO.getReviewContent())
-                .likeCnt(reviewDTO.getLikeCnt())
-                .reportCnt(reviewDTO.getReportCnt())
-                .bookMarkCnt(reviewDTO.getBookMarkCnt())
-                .tagNo(new TagVO(reviewDTO.getTagNo()))
-                .reviewWriter(new ReviewWriterVO(reviewDTO.getReviewWriter()))
+                .reviewTitle(createReviewRequest.getReviewTitle())
+                .reviewContent(createReviewRequest.getReviewContent())
+                .likeCnt(0l)
+                .reportCnt(0l)
+                .bookMarkCnt(0l)
+                .tagNo(new TagVO(createReviewRequest.getTagNo()))
+                .reviewWriter(new ReviewWriterVO(createReviewRequest.getReviewWriter()))
                 .build();
     }
 

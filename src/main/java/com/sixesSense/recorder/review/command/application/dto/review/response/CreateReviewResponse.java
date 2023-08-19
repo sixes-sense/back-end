@@ -23,12 +23,12 @@ public class CreateReviewResponse {
 
     private Long reviewWriter;
 
-    public static CreateReviewResponse toCreateResponse(Review createdReview) {
+    public static CreateReviewResponse toCreateResponse(Review review) {
         return CreateReviewResponse.builder()
-                .reviewTitle(createdReview.getReviewTitle())
-                .reviewContent(createdReview.getReviewContent())
-                .tagNo(createdReview.getTagNo().getTagNo())
-                .reviewWriter(createdReview.getReviewWriter().getReviewWriterMemberNo())
+                .reviewTitle(review.getReviewTitle())
+                .reviewContent(review.getReviewContent())
+                .tagNo(review.getTagNo().getTagNo())
+                .reviewWriter(review.getReviewWriter().getReviewWriterMemberNo())
                 .build();
     }
 }

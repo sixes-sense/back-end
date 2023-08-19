@@ -2,16 +2,22 @@ package com.sixesSense.recorder.review.command.application.controller;
 
 
 import com.sixesSense.recorder.review.command.application.controller.object.TestObjects;
+import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
+import com.sixesSense.recorder.review.command.application.dto.comment.response.CreateCommentResponse;
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
+import com.sixesSense.recorder.review.command.application.service.CommandCommentServiceImpl;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
+import com.sixesSense.recorder.review.command.domain.repository.CommentRepository;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
+import com.sixesSense.recorder.review.query.application.service.QueryReviewServiceImpl;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -26,16 +32,20 @@ import java.util.Optional;
 
 @SpringBootTest
 @Transactional
-public class ReviewServiceTests {
+public class CommandReviewTests {
 
     @Autowired
     private CommandReviewServiceImpl commandReviewService;
+
+    @Autowired
+    private CommandCommentServiceImpl commandCommentService;
 
     @Autowired
     private ReviewRepository reviewRepository;
 
     @Autowired
     private ReviewMapper reviewMapper;
+
 
     @DisplayName("리뷰 등록 테스트")
     @Test
@@ -156,4 +166,16 @@ public class ReviewServiceTests {
         Assertions.assertFalse(postLikeResponse.getIsLiked());
         Assertions.assertEquals(beforeLike, afterLike);
     }
+
+//    @DisplayName("댓글 작성 확인")
+//    @Test
+//    void CreateComment(){
+//        CreateCommentRequest createCommentRequest = TestObjects.createComment();
+//
+//        CreateCommentResponse comment = commandCommentService.createComment(createCommentRequest);
+//
+//        Assertions.assertNotNull(comment);
+//    }
+
+
 }

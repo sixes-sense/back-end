@@ -17,7 +17,4 @@ public interface ReviewService {
     void reviewDelete(Long reviewNo);
 
     PostLikeResponse countLike(Long reviewNo, PostLikeRequest clickLikesDTO);
-
-//    ReviewLikesDTO minusLike(Long reviewNo, ReviewLikesDTO clickedLikesDTO);
-
 }

@@ -1,6 +1,7 @@
 package com.sixesSense.recorder.review.query.application.service;
 
 
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import com.sixesSense.recorder.review.query.domain.service.QueryReviewService;

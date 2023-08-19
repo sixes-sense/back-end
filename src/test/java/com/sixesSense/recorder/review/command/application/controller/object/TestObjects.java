@@ -1,5 +1,6 @@
 package com.sixesSense.recorder.review.command.application.controller.object;
 
+import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
@@ -14,9 +15,6 @@ public class TestObjects {
         return CreateReviewRequest.builder()
                 .reviewTitle("테스트 제목")
                 .reviewContent("테스트 내용")
-                .likeCnt(0L)
-                .reportCnt(0L)
-                .bookMarkCnt(0L)
                 .tagNo(1L)
                 .reviewWriter(1L)
                 .build();
@@ -35,6 +33,14 @@ public class TestObjects {
                 .memberNo(testMemberNo)
                 .reviewNo(15l)
                 .isLiked(isLiked)
+                .build();
+    }
+
+    public static CreateCommentRequest createComment(){
+        return CreateCommentRequest.builder()
+                .review_no(1l)
+                .member_no(1l)
+                .commentContent("테스트 댓글 내용")
                 .build();
     }
 }

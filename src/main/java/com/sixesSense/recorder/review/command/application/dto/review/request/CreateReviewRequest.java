@@ -13,12 +13,6 @@ public class CreateReviewRequest {
 
     private String reviewContent;
 
-    private Long likeCnt;
-
-    private Long reportCnt;
-
-    private Long bookMarkCnt;
-
     private Long tagNo;
 
     private Long reviewWriter;

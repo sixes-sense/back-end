@@ -16,11 +16,11 @@ public class UpdateReviewResponse {
 
     private String reviewContent;
 
-    public static UpdateReviewResponse toUpdateResponse(Review updatedReview) {
+    public static UpdateReviewResponse toUpdateResponse(Review review) {
         return UpdateReviewResponse.builder()
-                .reviewNo(updatedReview.getReviewNo())
-                .reviewTitle(updatedReview.getReviewTitle())
-                .reviewContent(updatedReview.getReviewContent())
+                .reviewNo(review.getReviewNo())
+                .reviewTitle(review.getReviewTitle())
+                .reviewContent(review.getReviewContent())
                 .build();
     }
 }
