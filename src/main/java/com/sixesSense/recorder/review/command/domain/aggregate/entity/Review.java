@@ -1,11 +1,10 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
 import com.sixesSense.recorder.common.entity.BaseTimeEntity;
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
-import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
-import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewTagVO;
+import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -40,12 +39,15 @@ public class Review extends BaseTimeEntity {
     private Long bookMarkCnt;
 
     @Embedded
-    private ReviewTagVO tagNo;
+    private TagVO tagNo;
 
     @Embedded
     private ReviewWriterVO reviewWriter;
 
-    public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, ReviewTagVO tagNo, ReviewWriterVO reviewWriter) {
+    @OneToMany
+    private List<Comment> comments;
+
+    public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, TagVO tagNo, ReviewWriterVO reviewWriter) {
         this.reviewTitle = reviewTitle;
         this.reviewContent = reviewContent;
         this.likeCnt = likeCnt;
@@ -55,15 +57,15 @@ public class Review extends BaseTimeEntity {
         this.reviewWriter = reviewWriter;
     }
 
-    public static Review toEntity(CreateReviewRequest reviewDTO){
+    public static Review toEntity(CreateReviewRequest createReviewRequest){
         return Review.builder()
-                .reviewTitle(reviewDTO.getReviewTitle())
-                .reviewContent(reviewDTO.getReviewContent())
-                .likeCnt(reviewDTO.getLikeCnt())
-                .reportCnt(reviewDTO.getReportCnt())
-                .bookMarkCnt(reviewDTO.getBookMarkCnt())
-                .tagNo(new ReviewTagVO(reviewDTO.getTagNo()))
-                .reviewWriter(new ReviewWriterVO(reviewDTO.getReviewWriter()))
+                .reviewTitle(createReviewRequest.getReviewTitle())
+                .reviewContent(createReviewRequest.getReviewContent())
+                .likeCnt(0l)
+                .reportCnt(0l)
+                .bookMarkCnt(0l)
+                .tagNo(new TagVO(createReviewRequest.getTagNo()))
+                .reviewWriter(new ReviewWriterVO(createReviewRequest.getReviewWriter()))
                 .build();
     }
 
@@ -76,13 +78,14 @@ public class Review extends BaseTimeEntity {
         this.likeCnt = Math.max(0L, this.likeCnt - 1);
     }
 
-    public void updateReview(UpdateReviewRequest updatedReview){
-        if(updatedReview.getReviewTitle() != null) {
-            this.reviewTitle = updatedReview.getReviewTitle();
+    public void updateReview(UpdateReviewRequest updatingReview){
+        if(updatingReview.getReviewTitle() != null) {
+            this.reviewTitle = updatingReview.getReviewTitle();
         }
 
-        if(updatedReview.getReviewContent() != null){
-            this.reviewContent = updatedReview.getReviewContent();
+        if(updatingReview.getReviewContent() != null){
+            this.reviewContent = updatingReview.getReviewContent();
         }
     }
+
 }

@@ -1,9 +1,13 @@
 package com.sixesSense.recorder.review.command.application.service;
 
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
-import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
-import com.sixesSense.recorder.review.command.application.dto.request.CreateReviewRequest;
-import com.sixesSense.recorder.review.command.application.dto.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
+import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
+import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
+import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
+import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.ReviewLikes;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
@@ -23,27 +27,30 @@ public class CommandReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public ReviewDTO reviewSave(CreateReviewRequest createReviewRequest) {
+    public CreateReviewResponse reviewSave(CreateReviewRequest createReviewRequest) {
         /* createReviewRequest -> entity 변환 후 저장, 다시 dto로 변환 후 리턴 */
         Review review = Review.toEntity(createReviewRequest);
         Review createdReview = reviewRepository.save(review);
-        ReviewDTO reviewDTO = ReviewDTO.toReviewDTO(createdReview);
+        CreateReviewResponse createReviewResponse = CreateReviewResponse.toCreateResponse(createdReview);
 
-        return reviewDTO;
+        return createReviewResponse;
     }
 
 
-
+    @Override
     @Transactional
-    public boolean reviewUpdate(UpdateReviewRequest updatingReview) {
-        Review review = reviewRepository.findByReviewNo(updatingReview.getReviewNo());
+    public UpdateReviewResponse reviewUpdate(UpdateReviewRequest updateReviewRequest) {
+        Review review = reviewRepository.findByReviewNo(updateReviewRequest.getReviewNo());
 
-        if(review == null){
-            return false;
-        }
+//        if(review == null){
+//            UpdateReviewResponse updateReviewResponse =
+//        }
 
-        review.updateReview(updatingReview);
-        return true;
+        review.updateReview(updateReviewRequest);
+        Review updatedReview = reviewRepository.findByReviewNo(updateReviewRequest.getReviewNo());
+        UpdateReviewResponse updateReviewResponse = UpdateReviewResponse.toUpdateResponse(updatedReview);
+
+        return updateReviewResponse;
     }
 
     @Override
@@ -54,14 +61,13 @@ public class CommandReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public ReviewLikesDTO countLike(Long reviewNo, ReviewLikesDTO clickLikesDTO) {
+    public PostLikeResponse countLike(Long reviewNo, PostLikeRequest postLikeRequest) {
         Review review = reviewRepository.findByReviewNo(reviewNo);
-        ReviewLikes reviewLikes = ReviewLikes.toEntity(clickLikesDTO);
+        ReviewLikes reviewLikes = ReviewLikes.toEntity(postLikeRequest);
 
-        /* 좋아요 누른적 있는지 체크 후 좋아요 entity에 이력 저장 */
-        ReviewLikes countReviewLikes = reviewInvalidService.checkLikeIsClicked(review, reviewLikes);
+        /* 좋아요 누른적 있는지 체크 후 좋아요 업데이트 */
+        PostLikeResponse postLikeResponse = reviewInvalidService.checkLikeIsClicked(review, reviewLikes);
 
-        /* 좋아요 엔티티를 DTO로 변환 후 리턴 */
-        return ReviewLikesDTO.fromEntity(countReviewLikes);
+        return postLikeResponse;
     }
 }
