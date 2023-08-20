@@ -1,7 +1,7 @@
 package com.sixesSense.recorder.review.query.domain.repository;
 
 
-import com.sixesSense.recorder.review.query.application.dto.QueryReviewDTO;
+import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,8 +10,8 @@ import java.util.List;
 public interface ReviewMapper {
 
     // 리뷰 전체 조회
-    List<QueryReviewDTO> reviewLists();
+    List<ReadReviewResponse> reviewLists();
 
     // 리뷰 상세 조회
-    QueryReviewDTO reviewListByReviewNo(Long reviewNo);
+    ReadReviewResponse reviewListByReviewNo(Long reviewNo);
 }

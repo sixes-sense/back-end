@@ -4,7 +4,6 @@ create table review (
                         like_cnt bigint,
                         report_cnt bigint,
                         review_content varchar(255),
-                        review_date date,
                         review_title varchar(255),
                         member_no bigint,
                         tag_no bigint,

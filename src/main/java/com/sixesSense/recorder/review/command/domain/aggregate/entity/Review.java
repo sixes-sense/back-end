@@ -1,12 +1,15 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
+import com.sixesSense.recorder.common.entity.BaseTimeEntity;
+import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewTagVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,7 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Review {
+public class Review extends BaseTimeEntity {
 
     @Id
     @Column(name = "review_no")
@@ -27,9 +30,6 @@ public class Review {
     @Column(name = "review_content")
     private String reviewContent;
 
-    @Column(name = "review_date")
-    private LocalDate reviewDate;
-
     @Column(name = "like_cnt")
     private Long likeCnt;
 
@@ -40,32 +40,23 @@ public class Review {
     private Long bookMarkCnt;
 
     @Embedded
-    private TagVO tagNo;
+    private ReviewTagVO tagNo;
 
     @Embedded
     private ReviewWriterVO reviewWriter;
 
-    public Review(String reviewTitle, String reviewContent, LocalDate reviewDate, Long likeCnt, Long reportCnt, Long bookMarkCnt, TagVO tagNo, ReviewWriterVO reviewWriter) {
-        this.reviewTitle = reviewTitle;
-        this.reviewContent = reviewContent;
-        this.reviewDate = reviewDate;
-        this.likeCnt = likeCnt;
-        this.reportCnt = reportCnt;
-        this.bookMarkCnt = bookMarkCnt;
-        this.tagNo = tagNo;
-        this.reviewWriter = reviewWriter;
-    }
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments;
 
-    public static Review toEntity(ReviewDTO reviewDTO){
+    public static Review toEntity(CreateReviewRequest createReviewRequest){
         return Review.builder()
-                .reviewTitle(reviewDTO.getReviewTitle())
-                .reviewContent(reviewDTO.getReviewContent())
-                .reviewDate(reviewDTO.getReviewDate())
-                .likeCnt(reviewDTO.getLikeCnt())
-                .reportCnt(reviewDTO.getReportCnt())
-                .bookMarkCnt(reviewDTO.getBookMarkCnt())
-                .tagNo(new TagVO(reviewDTO.getTagNo()))
-                .reviewWriter(new ReviewWriterVO(reviewDTO.getReviewWriter()))
+                .reviewTitle(createReviewRequest.getReviewTitle())
+                .reviewContent(createReviewRequest.getReviewContent())
+                .likeCnt(0l)
+                .reportCnt(0l)
+                .bookMarkCnt(0l)
+                .tagNo(new ReviewTagVO(createReviewRequest.getTagNo()))
+                .reviewWriter(new ReviewWriterVO(createReviewRequest.getReviewWriter()))
                 .build();
     }
 
@@ -78,17 +69,14 @@ public class Review {
         this.likeCnt = Math.max(0L, this.likeCnt - 1);
     }
 
-    public void updateReview(ReviewDTO updatedReview){
-        if(updatedReview.getReviewTitle() != null) {
-            this.reviewTitle = updatedReview.getReviewTitle();
+    public void updateReview(UpdateReviewRequest updatingReview){
+        if(updatingReview.getReviewTitle() != null) {
+            this.reviewTitle = updatingReview.getReviewTitle();
         }
 
-        if(updatedReview.getReviewContent() != null){
-            this.reviewContent = updatedReview.getReviewContent();
-        }
-
-        if(updatedReview.getReviewDate() != LocalDate.now()){
-            this.reviewDate = updatedReview.getReviewDate();
+        if(updatingReview.getReviewContent() != null){
+            this.reviewContent = updatingReview.getReviewContent();
         }
     }
+
 }
