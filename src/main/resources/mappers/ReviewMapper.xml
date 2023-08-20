@@ -4,17 +4,17 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sixesSense.recorder.review.query.domain.repository.ReviewMapper">
 
-    <resultMap id="reviewResultMap" type="com.sixesSense.recorder.review.query.application.dto.QueryReviewDTO">
+    <resultMap id="reviewResultMap" type="com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse">
         <id property="reviewNo" column="review_no"/>
         <result property="reviewTitle" column="review_title"/>
         <result property="reviewContent" column="review_content"/>
-        <result property="reviewDate" column="review_date"/>
         <result property="likeCnt" column="like_cnt"/>
         <result property="reportCnt" column="report_cnt"/>
         <result property="bookMarkCnt" column="bookMark_cnt"/>
         <result property="tagNo" column="tag_no"/>
         <result property="reviewWriter" column="member_no"/>
     </resultMap>
+
 
     <!-- 전체 리뷰 조회 -->
     <select id="reviewLists" resultMap="reviewResultMap">

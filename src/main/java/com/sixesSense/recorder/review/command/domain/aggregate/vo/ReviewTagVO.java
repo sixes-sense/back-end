@@ -11,7 +11,7 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class TagVO {
+public class ReviewTagVO {
     @Column(name = "tag_no")
     private Long tagNo;
 }

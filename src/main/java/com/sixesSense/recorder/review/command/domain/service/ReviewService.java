@@ -1,19 +1,21 @@
 package com.sixesSense.recorder.review.command.domain.service;
 
 
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
-import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
+import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
+import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
+import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
+import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 
 public interface ReviewService {
 
-    void reviewSave(ReviewDTO review);
+    CreateReviewResponse reviewSave(CreateReviewRequest reviewDTO);
 
-    boolean reviewUpdate(ReviewDTO updatedReview);
+    UpdateReviewResponse reviewUpdate(UpdateReviewRequest updateReviewRequest, Long reviewNo);
 
     void reviewDelete(Long reviewNo);
 
-    ReviewLikesDTO countLike(Long reviewNo, ReviewLikesDTO clickLikesDTO);
-
-//    ReviewLikesDTO minusLike(Long reviewNo, ReviewLikesDTO clickedLikesDTO);
-
+    PostLikeResponse countLike(Long reviewNo, PostLikeRequest clickLikesDTO);
 }
