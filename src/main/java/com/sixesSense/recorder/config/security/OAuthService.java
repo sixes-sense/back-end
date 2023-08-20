@@ -27,6 +27,7 @@ public class OAuthService implements OAuth2UserService<OAuth2UserRequest, OAuth2
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        log.info("🤖 엑세스 토큰 [{}]",userRequest.getAccessToken());
         //request를 통해 어떤 Oauth서비스인지 정보를 가져오고 pk값을 가져옴
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest); //OAuth서비스에서 가져온 유저정보를 담고있음
