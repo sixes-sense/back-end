@@ -2,10 +2,10 @@ spring:
     config:
         import: "optional:configserver:http://3.129.125.36:80/"
     datasource:
-        driver-class-name: ${db-connection.driver}
-        url: ${db-connection.url}
-        username: ${db-connection.username}
-        password: ${db-connection.password}
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/recorder?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        username: sixthsense
+        password: sixthsense
         hikari:
             auto-commit: true
     jpa:
@@ -18,7 +18,7 @@ spring:
                 show_sql: true
                 format_sql: true
         hibernate:
-            ddl-auto: create
+            ddl-auto: create-drop
         defer-datasource-initialization: true
     sql:
         init:

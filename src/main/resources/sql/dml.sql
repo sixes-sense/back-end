@@ -14,3 +14,7 @@ VALUES(1, '매실 못먹음', '컴프즈 문닫음', 0,0,0,'2023-08-09',1,1),
       (13, '열세번째 리뷰', '열세번째 내용', 0, 0, 0, '2023-08-21', 13, 13),
       (14, '열네번째 리뷰', '열네번째 내용', 0, 0, 0, '2023-08-22', 14, 14),
       (15, '열다섯번째 리뷰', '열다섯번째 내용', 0, 0, 0, '2023-08-23', 15, 15);
+
+INSERT INTO recorder.achievements_tb (achievements_created_date, achievments_description, achievments_name, achievements_updated_date, attachments_no) VALUES ( '2023-08-20 22:04:28.000000', '좋아요 10개 달성', '좋아요 10개 달성', '2023-08-20 22:04:55.000000', 1);
+INSERT INTO recorder.achievements_tb (achievements_created_date, achievments_description, achievments_name, achievements_updated_date, attachments_no) VALUES ( '2023-08-20 22:04:28.000000', '리뷰 첫 작성', '리뷰 첫 작성', '2023-08-20 22:04:55.000000', 2);
+INSERT INTO recorder.achievements_tb (achievements_created_date, achievments_description, achievments_name, achievements_updated_date, attachments_no) VALUES ( '2023-08-20 22:04:28.000000', '리뷰 답글 작성', '리뷰 답글 작성', '2023-08-20 22:04:55.000000', 3);
