@@ -3,5 +3,53 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sixesSense.recorder.achievementsDomain.query.domain.repository.AchievementsMapper">
+    <resultMap id="achievementsMap" type="com.sixesSense.recorder.achievements.query.domain.aggregate.entity.Achievements">
+        <id property="achievementNo" column="achievment_no" />
+        <result property="achievementName" column="achievment_name"/>
+        <result property="achievementDescription" column="achievment_description"/>
+        <result property="attachment_no" column="achievement_created_date"/>
+        <result property="achievementCreatedDate" column="achievement_created_date"/>
+        <result property="achievementUpdatedDate" column="achievement_updated_date"/>
+    </resultMap>
 
+    <select id="getAchievements" resultMap="achievementsMap">
+        SELECT
+               A.*
+        FROM Achievements_TB A
+        LEFT JOIN Attachments_TB B ON(A.attachment_no = B.attachment_no)
+        <where>
+            1=1
+        </where>
+        <if test="sort.sorted">
+            <trim prefix="order by">
+                <foreach item="order" index="i" collection="sort" separator=", ">
+                    ${order.property} ${order.direction}
+                </foreach>
+            </trim>
+        </if>
+        <if test="size and offset">
+            LIMIT #{ size }
+            OFFSET #{ offset }
+        </if>
+    </select>
+
+    <insert id="insertAchievements" parameterMap="_map">
+        INSERT
+        INTO recorder.achievements_tb
+        (
+          achievement_name
+        , achievement_description
+        , attachment_no
+        , achievement_created_date
+        , achievement_updated_date
+        )
+        VALUES
+        (
+          #{achievementName}
+        , #{achievementDescription}
+        , #{attachment_no}
+        , #{achievementCreatedDate}
+        , #{achievementUpdatedDate}
+        )
+    </insert>
 </mapper>

@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Comment;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,21 +18,28 @@ import java.time.LocalDateTime;
 public class Achievements {
 
     @Id
-    @Column(name = "achievments_no")
-    private Long achievementsNo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "achievment_no")
+    @Comment("업적 번호")
+    private Long achievementNo;
 
-    @Column(name = "achievments_name")
-    private String achievementsName;
+    @Column(name = "achievment_name")
+    @Comment("업적 이름")
+    private String achievementName;
 
-    @Column(name = "achievments_description")
-    private String achievementsDescription;
+    @Column(name = "achievment_description")
+    @Comment("업적 설명")
+    private String achievementDescription;
 
-    @Column(name = "attachments_no")
-    private Long attachmentsNo;
+    @Column(name = "attachment_no")
+    @Comment("업적 이미지")
+    private Long attachmentNo;
 
-    @Column(name = "achievements_created_date")
+    @Column(name = "achievement_created_date")
+    @Comment("업적 생성시간")
     private LocalDateTime achievementsCreatedDate;
 
-    @Column(name = "achievements_updated_date")
+    @Column(name = "achievement_updated_date")
+    @Comment("업적 수정시간")
     private LocalDateTime achievementsUpdatedDate;
 }
