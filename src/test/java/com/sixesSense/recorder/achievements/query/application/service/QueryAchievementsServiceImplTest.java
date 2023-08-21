@@ -43,7 +43,7 @@ class QueryAchievementsServiceImplTest {
     void testFIndAchievementsList(String name, String description, Long attachmentNo, LocalDateTime created, LocalDateTime updated) {
         //given
         Achievements achievements = new Achievements(name, description, attachmentNo, created, updated);
-        achievementsMapper.insertAchievements(achievements);
+//        achievementsMapper.insertAchievements(achievements);
         //when
         List<Achievements> list = achievementsMapper.getAchievements();
 

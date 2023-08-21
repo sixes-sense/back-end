@@ -20,11 +20,12 @@ VALUES (1, False, 1, 15),
        (2, true, 2, 15);
 
 insert into comment(comment_no, comment_content, member_no, review_no)
-values (1, '댓글 1', 1, 1);
+values (1, '댓글 1', 1, 1),
+       (2, '댓글 2', 2, 1);
 
-INSERT INTO recorder.achievements_tb (achievements_created_date, achievments_description, achievments_name, achievements_updated_date, attachments_no)
+INSERT INTO recorder.achievements_tb (achievement_created_date, achievment_description, achievment_name, achievement_updated_date, attachment_no)
 VALUES ('2023-08-20 22:04:28.000000', '좋아요 10개 달성', '좋아요 10개 달성', '2023-08-20 22:04:55.000000', 1);
-INSERT INTO recorder.achievements_tb (achievements_created_date, achievments_description, achievments_name, achievements_updated_date, attachments_no)
+INSERT INTO recorder.achievements_tb (achievement_created_date, achievment_description, achievment_name, achievement_updated_date, attachment_no)
 VALUES ('2023-08-20 22:04:28.000000', '리뷰 첫 작성', '리뷰 첫 작성', '2023-08-20 22:04:55.000000', 2);
-INSERT INTO recorder.achievements_tb (achievements_created_date, achievments_description, achievments_name, achievements_updated_date, attachments_no)
+INSERT INTO recorder.achievements_tb (achievement_created_date, achievment_description, achievment_name, achievement_updated_date, attachment_no)
 VALUES ('2023-08-20 22:04:28.000000', '리뷰 답글 작성', '리뷰 답글 작성', '2023-08-20 22:04:55.000000', 3);
