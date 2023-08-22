@@ -28,7 +28,7 @@ public class QueryAchievementsServiceImpl implements QueryAchievementsService {
         Long size = achievementsMapper.getAchievementsSize();
 
         if((achievements.isEmpty() || achievements == null) || size == null) {
-            throw new Exception("ERR");
+            throw new Exception("NOT_FOUND_ACHIEVEMENTS");
         } else {
             List<ReadAchievementsResponse> readAchievementsResponses = achievements.stream().map(achievement -> modelMapper.map(achievement, ReadAchievementsResponse.class)).collect(Collectors.toList());
             return new PageImpl<>(readAchievementsResponses, pageable, size);
