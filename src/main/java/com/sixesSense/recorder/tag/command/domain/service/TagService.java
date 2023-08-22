@@ -1,7 +1,7 @@
 package com.sixesSense.recorder.tag.command.domain.service;
 
-import com.sixesSense.recorder.tag.command.application.dto.CreateTagDTO;
+import com.sixesSense.recorder.tag.command.application.dto.CreateTagRequest;
 
 public interface TagService {
-    boolean createTag(CreateTagDTO tagDTO);
+    void createTag(CreateTagRequest tagRequest);
 }
