@@ -33,7 +33,7 @@
              , B.attachment_url
              , A.created_at
              , A.last_modified_at
-        FROM Achievements_TB A
+        FROM achievements_TB A
         LEFT JOIN Attachments_TB B ON(A.achievement_no = B.achievement_no)
         <where>
             1=1
@@ -59,7 +59,7 @@
 
     <insert id="insertAchievements">
         INSERT
-        INTO recorder.achievements_tb
+        INTO achievements_tb
         (
           achievement_name
         , achievement_description
