@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixesSense.recorder.attachments.query.domain.repository.AttachmentsMapper">
+    <resultMap id="attachmentsMap" type="com.sixesSense.recorder.attachments.query.domain.aggregate.entity.Attachments">
+        <id property="attachmentNo" column="attachment_no"/>
+        <result property="attachmentOriginalName" column="attachment_original_name"/>
+        <result property="attachmentChangedName" column="attachment_changed_name"/>
+        <result property="attachmentUrl" column="attachment_url"/>
+        <result property="attachmentFilenameExtension" column="attachment_filename_extension"/>
+        <result property="attachmentCategory" column="attachment_category"/>
+        <result property="attachmentCreatedDate" column="created_at"/>
+        <result property="attachmentUpdatedDate" column="last_modified_at"/>
+    </resultMap>
+
+    <insert id="insertAttachment">
+        INSERT
+        INTO Attachments_TB
+        (
+          attachment_original_name
+        , attachment_changed_name
+        , attachment_url
+        , attachment_filename_extension
+        , attachment_category
+        , achievement_no
+        , created_at
+        , last_modified_at
+        )
+        VALUES
+        (
+          #{attachmentOriginalName}
+        , #{attachmentChangedName}
+        , #{attachmentUrl}
+        , #{attachmentCategory}
+        , #{attachmentFilenameExtension}
+        , #{achievementNo}
+        , #{achievementCreatedDate}
+        , #{achievementUpdatedDate}
+        )
+    </insert>
+</mapper>

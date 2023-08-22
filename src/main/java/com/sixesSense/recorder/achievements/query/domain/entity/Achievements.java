@@ -1,6 +1,7 @@
 package com.sixesSense.recorder.achievements.query.domain.entity;
 
 
+import com.sixesSense.recorder.attachments.query.domain.aggregate.entity.Attachments;
 import lombok.*;
 import java.time.LocalDateTime;
 
@@ -17,16 +18,13 @@ public class Achievements {
 
     private String achievementDescription;
 
-    private Long attachmentNo;
-
     private LocalDateTime achievementCreatedDate;
 
     private LocalDateTime achievementUpdatedDate;
 
-    public Achievements(String achievementName, String achievementDescription, Long attachmentNo, LocalDateTime achievementCreatedDate, LocalDateTime achievementUpdatedDate) {
+    public Achievements(String achievementName, String achievementDescription, LocalDateTime achievementCreatedDate, LocalDateTime achievementUpdatedDate) {
         this.achievementName = achievementName;
         this.achievementDescription = achievementDescription;
-        this.attachmentNo = attachmentNo;
         this.achievementCreatedDate = achievementCreatedDate;
         this.achievementUpdatedDate = achievementUpdatedDate;
     }

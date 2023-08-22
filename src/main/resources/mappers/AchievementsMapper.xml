@@ -4,33 +4,51 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sixesSense.recorder.achievements.query.domain.repository.AchievementsMapper">
     <resultMap id="achievementsMap" type="com.sixesSense.recorder.achievements.query.domain.entity.Achievements">
-        <id property="achievementNo" column="achievment_no" />
-        <result property="achievementName" column="achievment_name"/>
-        <result property="achievementDescription" column="achievment_description"/>
-        <result property="attachment_no" column="achievement_created_date"/>
-        <result property="achievementCreatedDate" column="achievement_created_date"/>
-        <result property="achievementUpdatedDate" column="achievement_updated_date"/>
+        <id property="achievementNo" column="achievement_no" />
+        <result property="achievementName" column="achievement_name"/>
+        <result property="achievementDescription" column="achievement_description"/>
+        <result property="achievementCreatedDate" column="created_at"/>
+        <result property="achievementUpdatedDate" column="last_modified_at"/>
+    </resultMap>
+
+    <resultMap id="attachmentsMap" type="com.sixesSense.recorder.attachments.query.domain.aggregate.entity.Attachments">
+        <id property="attachmentNo" column="attachment_no"/>
+        <result property="attachmentOriginalName" column="attachment_original_name"/>
+        <result property="attachmentChangedName" column="attachment_changed_name"/>
+        <result property="attachmentUrl" column="attachment_url"/>
+        <result property="attachmentCategory" column="attachment_category"/>
+        <result property="attachmentFilenameExtension" column="attachment_filename_extension"/>
+        <result property="achievementCreatedDate" column="created_at"/>
+        <result property="achievementUpdatedDate" column="last_modified_at"/>
     </resultMap>
 
     <select id="getAchievements" resultMap="achievementsMap">
         SELECT
-               A.*
+               A.achievement_no
+             , A.achievement_name
+             , A.achievement_description
+             , B.attachment_no
+             , B.attachment_changed_name
+             , B.attachment_original_name
+             , B.attachment_url
+             , A.created_at
+             , A.last_modified_at
         FROM Achievements_TB A
-        LEFT JOIN Attachments_TB B ON(A.attachment_no = B.attachment_no)
+        LEFT JOIN Attachments_TB B ON(A.achievement_no = B.achievement_no)
         <where>
             1=1
         </where>
-<!--        <if test="sort.sorted">-->
-<!--            <trim prefix="order by">-->
-<!--                <foreach item="order" index="i" collection="sort" separator=", ">-->
-<!--                    ${order.property} ${order.direction}-->
-<!--                </foreach>-->
-<!--            </trim>-->
-<!--        </if>-->
-<!--        <if test="size and offset">-->
-<!--            LIMIT #{ size }-->
-<!--            OFFSET #{ offset }-->
-<!--        </if>-->
+        <if test="sort.sorted">
+            <trim prefix="order by">
+                <foreach item="order" index="i" collection="sort" separator=", ">
+                    ${order.property} ${order.direction}
+                </foreach>
+            </trim>
+        </if>
+        <if test="size and offset">
+            LIMIT #{ size }
+            OFFSET #{ offset }
+        </if>
     </select>
 
     <insert id="insertAchievements">
@@ -39,15 +57,13 @@
         (
           achievement_name
         , achievement_description
-        , attachment_no
-        , achievement_created_date
-        , achievement_updated_date
+        , created_at
+        , last_modified_at
         )
         VALUES
         (
           #{achievementName}
         , #{achievementDescription}
-        , #{attachment_no}
         , #{achievementCreatedDate}
         , #{achievementUpdatedDate}
         )

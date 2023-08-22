@@ -1,15 +1,16 @@
 package com.sixesSense.recorder.achievements.query.application.service;
 
-import com.sixesSense.recorder.achievements.command.domain.repository.AchievementsRepository;
 import com.sixesSense.recorder.achievements.query.domain.entity.Achievements;
 import com.sixesSense.recorder.achievements.query.domain.repository.AchievementsMapper;
-import org.junit.jupiter.api.Assertions;
+import com.sixesSense.recorder.attachments.query.domain.aggregate.entity.Attachments;
+import com.sixesSense.recorder.attachments.query.domain.repository.AttachmentsMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -27,7 +28,6 @@ class QueryAchievementsServiceImplTest {
                 Arguments.of(
                         "업적1",
                         "업적1",
-                        1L,
                         LocalDateTime.now(),
                         LocalDateTime.now()
                 )
@@ -37,15 +37,24 @@ class QueryAchievementsServiceImplTest {
     @Autowired
     private AchievementsMapper achievementsMapper;
 
+    @Autowired
+    private AttachmentsMapper attachmentsMapper;
+
     @ParameterizedTest
     @MethodSource("getAchievementsInfo")
     @DisplayName("업적 목록 조회")
-    void testFIndAchievementsList(String name, String description, Long attachmentNo, LocalDateTime created, LocalDateTime updated) {
+    void testFindAchievementsList(String name, String description, LocalDateTime created, LocalDateTime updated) {
         //given
-        Achievements achievements = new Achievements(name, description, attachmentNo, created, updated);
-//        achievementsMapper.insertAchievements(achievements);
+        PageRequest pageable = PageRequest.of(0, 10);
+
+        Achievements achievements = new Achievements(4L, name, description, created, updated);
+        achievementsMapper.insertAchievements(achievements);
+
+        Attachments attachments = new Attachments(4L, "모니터앞 코기", "모니터앞 코기", "업적", "/assets/img/", ".jpg", 4L, LocalDateTime.now(), LocalDateTime.now());
+        attachmentsMapper.insertAttachment(attachments);
+
         //when
-        List<Achievements> list = achievementsMapper.getAchievements();
+        List<Achievements> list = achievementsMapper.getAchievements(pageable);
 
         //then
         assertDoesNotThrow(
