@@ -1,6 +1,7 @@
 package com.sixesSense.recorder.review.command.infrastructure.service;
 
 
+import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.ReviewLikes;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewLikesRepository;
@@ -15,7 +16,7 @@ public class ReviewValidService {
     private final ReviewLikesRepository reviewLikesRepository;
 
     @Transactional
-    public ReviewLikes checkLikeIsClicked(Review review, ReviewLikes reviewLikes) {
+    public PostLikeResponse checkLikeIsClicked(Review review, ReviewLikes reviewLikes) {
         /* 좋아요를 누른적이 없으면 if문 실행 */
         if (!(reviewLikes.getIsLiked())){
             /*
@@ -26,14 +27,17 @@ public class ReviewValidService {
             reviewLikes.like();
             reviewLikesRepository.save(reviewLikes);
 
-            return reviewLikes;
+            PostLikeResponse postLikeResponse = PostLikeResponse.fromEntity(reviewLikes);
+            return postLikeResponse;
+        }else {
+            /* 좋아요 누른적 있으면 좋아요 -1 및 좋아요 isLiked = false 설정 후 false 반환*/
+            ReviewLikes Like = reviewLikesRepository.findByReviewNoAndMemberNo(reviewLikes.getReviewNo(), reviewLikes.getMemberNo());
+            review.decreaseLikesCount();
+            Like.dontLike();
+            reviewLikes = Like;
         }
 
-        /* 좋아요 누른적 있으면 좋아요 -1 및 좋아요 isLiked = false 설정 후 false 반환*/
-        ReviewLikes Like = reviewLikesRepository.findByReviewNoAndMemberNo(reviewLikes.getReviewNo(), reviewLikes.getMemberNo());
-        review.decreaseLikesCount();
-        Like.dontLike();
-
-        return reviewLikes;
+        PostLikeResponse postLikeResponse = PostLikeResponse.fromEntity(reviewLikes);
+        return postLikeResponse;
     }
 }

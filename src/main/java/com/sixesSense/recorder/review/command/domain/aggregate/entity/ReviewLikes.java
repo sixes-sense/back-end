@@ -1,11 +1,8 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
-import com.sixesSense.recorder.review.command.application.dto.ReviewDTO;
-import com.sixesSense.recorder.review.command.application.dto.ReviewLikesDTO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.TagVO;
-import lombok.*;
 
+import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
+import lombok.*;
 import javax.persistence.*;
 
 @Entity
@@ -29,11 +26,11 @@ public class ReviewLikes {
     @Column(name = "is_liked")
     private Boolean isLiked;
 
-    public static ReviewLikes toEntity(ReviewLikesDTO clickLikesDTO){
+    public static ReviewLikes toEntity(PostLikeRequest postLikeRequest){
         return ReviewLikes.builder()
-                .reviewNo(clickLikesDTO.getReviewNo())
-                .memberNo(clickLikesDTO.getMemberNo())
-                .isLiked(clickLikesDTO.getIsLiked())
+                .reviewNo(postLikeRequest.getReviewNo())
+                .memberNo(postLikeRequest.getMemberNo())
+                .isLiked(postLikeRequest.getIsLiked())
                 .build();
     }
 
