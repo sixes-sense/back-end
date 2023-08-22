@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CreateTagServiceImpl implements TagService {
+public class CommandTagServiceImpl implements TagService {
 
     private final TagRepository tagRepository;
 
     @Autowired
-    public CreateTagServiceImpl(TagRepository tagRepository) {
+    public CommandTagServiceImpl(TagRepository tagRepository) {
         this.tagRepository = tagRepository;
     }
 
@@ -35,5 +35,11 @@ public class CreateTagServiceImpl implements TagService {
 
         Tag tag = new Tag(tagRequest.getTagName());
         tagRepository.save(tag);
+
+    }
+    @Override
+    @Transactional
+    public void deleteByTagId(Long tagId) {
+        tagRepository.deleteById(tagId);
     }
 }

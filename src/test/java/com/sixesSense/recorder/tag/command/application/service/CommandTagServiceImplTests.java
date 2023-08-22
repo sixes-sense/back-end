@@ -7,17 +7,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class CreateTagServiceImplTests {
+class CommandTagServiceImplTests {
 
     @Autowired
-    private CreateTagServiceImpl tagService;
+    private CommandTagServiceImpl tagService;
 
     @Autowired
     private TagRepository tagRepository;
@@ -52,4 +52,15 @@ class CreateTagServiceImplTests {
             tagService.createTag(invalidTagRequest);
         });
     }
+    @DisplayName("정상적으로 태그가 삭제되는지 확인")
+    @Test
+    void testDeleteByTagId() {
+        // Given
+        Tag savedTag = tagRepository.save(new Tag("test Tag"));
+
+        // When & Then
+        assertDoesNotThrow(() -> tagService.deleteByTagId(savedTag.getTagId()));
+        assertFalse(tagRepository.existsById(savedTag.getTagId()));
+    }
+
 }
