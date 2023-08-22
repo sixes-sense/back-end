@@ -51,6 +51,12 @@
         </if>
     </select>
 
+    <select id="getAchievementsSize" resultType="_long">
+        SELECT
+        COUNT(achievement_no)
+        FROM Achievements_TB
+    </select>
+
     <insert id="insertAchievements">
         INSERT
         INTO recorder.achievements_tb

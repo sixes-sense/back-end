@@ -1,10 +1,16 @@
 package com.sixesSense.recorder.achievements.query.application.controller;
 
+import com.sixesSense.recorder.achievements.query.application.dto.ReadAchievementsResponse;
+import com.sixesSense.recorder.achievements.query.application.service.QueryAchievementsServiceImpl;
 import com.sixesSense.recorder.achievements.query.domain.entity.Achievements;
 import com.sixesSense.recorder.achievements.query.domain.service.QueryAchievementsService;
 import lombok.RequiredArgsConstructor;
+import org.apache.http.Header;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +25,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QueryAchievementsController {
 
-    public final QueryAchievementsService achievementsService;
+    public final QueryAchievementsServiceImpl achievementsService;
 
     @GetMapping("/all")
-    public ResponseEntity getAchievements(@PageableDefault Pageable pageable) {
+    public ResponseEntity<Page<ReadAchievementsResponse>> getAchievements(@PageableDefault Pageable pageable) {
 
-        List<Achievements> achievementsList = achievementsService.getAchievements(pageable);
-
-        return null;
+        try{
+            Page<ReadAchievementsResponse> achievementsList = achievementsService.getAchievements(pageable);
+            return ResponseEntity.ok(achievementsList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            String message = e.getMessage();
+            return new ResponseEntity(message, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

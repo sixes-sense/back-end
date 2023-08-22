@@ -11,5 +11,7 @@ public interface AchievementsMapper {
 
     List<Achievements> getAchievements(Pageable pageable);
 
+    Long getAchievementsSize();
+
     void insertAchievements(Achievements achievements);
 }
