@@ -16,7 +16,7 @@
 
     <insert id="insertAttachment">
         INSERT
-        INTO attachments_TB
+        INTO attachments_tb
         (
           attachment_original_name
         , attachment_changed_name

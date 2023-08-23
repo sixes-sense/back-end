@@ -34,7 +34,7 @@
              , A.created_at
              , A.last_modified_at
         FROM achievements_TB A
-        LEFT JOIN Attachments_TB B ON(A.achievement_no = B.achievement_no)
+        LEFT JOIN attachments_tb B ON(A.achievement_no = B.achievement_no)
         <where>
             1=1
         </where>
