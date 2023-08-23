@@ -33,7 +33,7 @@
              , B.attachment_url
              , A.created_at
              , A.last_modified_at
-        FROM achievements_TB A
+        FROM achievements_tb A
         LEFT JOIN attachments_tb B ON(A.achievement_no = B.achievement_no)
         <where>
             1=1
@@ -54,7 +54,7 @@
     <select id="getAchievementsSize" resultType="_long">
         SELECT
         COUNT(achievement_no)
-        FROM Achievements_TB
+        FROM Achievements_tb
     </select>
 
     <insert id="insertAchievements">
