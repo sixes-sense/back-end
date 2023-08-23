@@ -28,4 +28,14 @@
         from review r
         where r.review_no = #{reviewNo}
     </select>
+
+    <!-- 리뷰 검색 -->
+    <select id="reviewListByKeyword" resultMap="reviewResultMap">
+        select *
+        from review r
+        where
+        <if test="type == 'title">
+            r.re
+        </if>
+    </select>
 </mapper>

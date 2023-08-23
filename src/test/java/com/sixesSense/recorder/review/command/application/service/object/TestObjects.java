@@ -1,8 +1,9 @@
-package com.sixesSense.recorder.review.command.application.controller.object;
+package com.sixesSense.recorder.review.command.application.service.object;
 
 import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.SearchReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 
@@ -40,6 +41,12 @@ public class TestObjects {
         return CreateCommentRequest.builder()
                 .memberNo(1l)
                 .commentContent("테스트 댓글 내용")
+                .build();
+    }
+
+    public static SearchReviewRequest searchReviewTitle(String keyword) {
+        return SearchReviewRequest.builder()
+                .keyword(keyword)
                 .build();
     }
 }
