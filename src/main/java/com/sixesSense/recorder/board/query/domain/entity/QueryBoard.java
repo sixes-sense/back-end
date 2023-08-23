@@ -24,11 +24,11 @@ public class QueryBoard {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;         // 본문
 
-    @Column(name = "create_at")
-    private LocalDateTime createAt; // 작성 날짜
-
-    @Column(name = "last_modified_at")
-    private LocalDateTime lastModifiedAt;   // 수정날짜
+//    @Column(name = "create_at")
+//    private LocalDateTime createAt; // 작성 날짜
+//
+//    @Column(name = "last_modified_at")
+//    private LocalDateTime lastModifiedAt;   // 수정날짜
 
     @Column(name = "admin_id", nullable = false)
     private Long adminId;           // 작성자이름
