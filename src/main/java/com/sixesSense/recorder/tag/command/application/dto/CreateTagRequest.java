@@ -7,8 +7,12 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class CreateTagDTO {
+public class CreateTagRequest {
 
     private Long tagId;
     private String tagName;
+
+    public CreateTagRequest(String tagName) {
+        this.tagName = tagName;
+    }
 }
