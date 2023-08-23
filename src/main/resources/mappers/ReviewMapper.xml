@@ -34,8 +34,15 @@
         select *
         from review r
         where
-        <if test="type == 'title">
-            r.re
+        <if test="searchType == 'title'">
+            r.review_title LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType == 'content'">
+            r.review_content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType == 'both'">
+            r.review_title LIKE CONCAT('%', #{keyword}, '%') OR
+            r.review_content LIKE CONCAT('%', #{keyword}, '%')
         </if>
     </select>
 </mapper>

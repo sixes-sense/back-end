@@ -17,5 +17,5 @@ public interface ReviewMapper {
     ReadReviewResponse reviewListByReviewNo(Long reviewNo);
 
     // 리뷰 검색
-    List<SearchReviewResponse> reviewListByKeyword(String keyword, String type);
+    List<SearchReviewResponse> reviewListByKeyword(String keyword, String searchType);
 }

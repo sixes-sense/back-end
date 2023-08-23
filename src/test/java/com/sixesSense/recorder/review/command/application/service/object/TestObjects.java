@@ -44,9 +44,10 @@ public class TestObjects {
                 .build();
     }
 
-    public static SearchReviewRequest searchReviewTitle(String keyword) {
+    public static SearchReviewRequest searchReviewTitle(String keyword, String type) {
         return SearchReviewRequest.builder()
                 .keyword(keyword)
+                .type(type)
                 .build();
     }
 }

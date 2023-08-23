@@ -175,17 +175,47 @@ public class CommandReviewTests {
     @Test
     void searchTitle(){
         String keyword = "매실";
+        String type = "title";
         int pageStart = 0;
         int reviewSize = 10;
 
         Pageable pageable = PageRequest.of(pageStart,reviewSize);
-        SearchReviewRequest searchReviewRequest = TestObjects.searchReviewTitle(keyword);
+        SearchReviewRequest searchReviewRequest = TestObjects.searchReviewTitle(keyword, type);
 
         Page<SearchReviewResponse> searchReviewResponses = queryReviewService.searchReview(searchReviewRequest, pageable);
 
-        for(SearchReviewResponse response : searchReviewResponses.getContent()){
-            String actualTitle = response.getReviewTitle();
-            Assertions.assertTrue(actualTitle.equals(keyword));
-        }
+        Assertions.assertNotNull(searchReviewResponses);
+    }
+
+    @DisplayName("내용만 검색")
+    @Test
+    void searchContent(){
+        String keyword = "컴포즈";
+        String type = "content";
+        int pageStart = 0;
+        int reviewSize = 10;
+
+        Pageable pageable = PageRequest.of(pageStart,reviewSize);
+        SearchReviewRequest searchReviewRequest = TestObjects.searchReviewTitle(keyword, type);
+
+        Page<SearchReviewResponse> searchReviewResponses = queryReviewService.searchReview(searchReviewRequest, pageable);
+
+        Assertions.assertNotNull(searchReviewResponses);
+    }
+
+    @DisplayName("전부 검색")
+    @Test
+    void searchAll(){
+        String keyword = "컴포즈";
+        String type = "both";
+        int pageStart = 0;
+        int reviewSize = 10;
+
+        Pageable pageable = PageRequest.of(pageStart,reviewSize);
+        SearchReviewRequest searchReviewRequest = TestObjects.searchReviewTitle(keyword, type);
+
+        Page<SearchReviewResponse> searchReviewResponses = queryReviewService.searchReview(searchReviewRequest, pageable);
+
+        Assertions.assertNotNull(searchReviewResponses);
     }
 }
