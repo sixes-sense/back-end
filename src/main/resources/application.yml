@@ -19,6 +19,10 @@ spring:
     web:
       resources:
         static-locations: file:src/main/resources/static/
+  cloud:
+    config:
+      server:
+        git:
+          uri:
 mybatis:
   mapper-locations: mappers/**/*.xml
-

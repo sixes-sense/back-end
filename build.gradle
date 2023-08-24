@@ -37,12 +37,16 @@ dependencies {
 
     //lombok
     compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.projectlombok:lombok:1.18.26'
 
     //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.5'
 
     //swagger
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.7.0'

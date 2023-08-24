@@ -1,7 +1,8 @@
 package com.sixesSense.recorder.review.query.application.service;
 
 
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
+import com.sixesSense.recorder.review.command.application.dto.review.request.SearchReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.response.SearchReviewResponse;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import com.sixesSense.recorder.review.query.domain.service.QueryReviewService;
@@ -24,15 +25,29 @@ public class QueryReviewServiceImpl implements QueryReviewService {
     @Override
     @Transactional(readOnly = true)
     public Page<ReadReviewResponse> getReviews(Pageable pageable) {
-        List<ReadReviewResponse> reviews = reviewMapper.reviewLists();
+        List<ReadReviewResponse> readReviewResponses = reviewMapper.reviewLists();
 
         int start = (int) pageable.getOffset();
-        int end = Math.min(start + pageable.getPageSize(), reviews.size());
+        int end = Math.min(start + pageable.getPageSize(), readReviewResponses.size());
 
         /* 리뷰 개수 유효성 체크 */
-        Page<ReadReviewResponse> pagingReviews = queryReviewValidService.checkReviewSize(reviews, start, end, pageable);
+        Page<ReadReviewResponse> pagingReviews = queryReviewValidService.checkReviewSize(readReviewResponses, start, end, pageable);
 
         return pagingReviews;
+    }
+
+    // 리뷰 검색
+    @Override
+    @Transactional(readOnly = true)
+    public Page<SearchReviewResponse> searchReview(SearchReviewRequest searchReviewRequest, Pageable pageable) {
+        List<SearchReviewResponse> searchReviewResponses = reviewMapper.reviewListByKeyword(searchReviewRequest.getKeyword(), searchReviewRequest.getType());
+
+        int start = (int) pageable.getOffset();
+        int end = Math.min(start+ pageable.getPageSize(), searchReviewResponses.size());
+
+        Page<SearchReviewResponse> searchReviews = queryReviewValidService.checkReviewSize(searchReviewResponses, start, end, pageable);
+
+        return searchReviews;
     }
 
     @Override
@@ -41,4 +56,17 @@ public class QueryReviewServiceImpl implements QueryReviewService {
         ReadReviewResponse reviewDetail = reviewMapper.reviewListByReviewNo(reviewNo);
         return reviewDetail;
     }
+
+//    @Override
+//    @Transactional(readOnly = true)
+//    public Page<ReadReviewResponse> searchReview(SearchReviewRequest searchReviewRequest, Pageable pageable) {
+//        List<ReadReviewResponse> readReviewResponses = reviewMapper.reviewListByKeyword(searchReviewRequest.getKeyword());
+//
+//        int start = (int) pageable.getOffset();
+//        int end = Math.min(start+ pageable.getPageSize(), readReviewResponses.size());
+//
+//        Page<ReadReviewResponse> searchReviews = queryReviewValidService.checkReviewSize(readReviewResponses, start, end, pageable);
+//
+//        return searchReviews;
+//    }
 }
