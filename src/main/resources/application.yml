@@ -10,12 +10,17 @@ server:
       enabled: true
       force: true
 spring:
+  name : client
   profiles:
-    # 운영환경(prod) or 로컬환경(dev) 중에 선택하세요.
     active: dev
     web:
       resources:
         static-locations: file:src/main/resources/static/
+  cloud:
+    config:
+      server:
+        git:
+          uri:
 mybatis:
   mapper-locations: mappers/**/*.xml
 

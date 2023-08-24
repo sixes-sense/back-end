@@ -22,3 +22,13 @@ VALUES (1, False, 1, 15),
 insert into comment(comment_no, comment_content, member_no, review_no)
 values (1, '댓글 1', 1, 1),
        (2, '댓글 2', 2, 1);
+
+INSERT INTO achievements_tb (created_at, achievement_description, achievement_name, last_modified_at)
+VALUES ('2023-08-20 22:04:28.000000', '좋아요 10개 달성', '좋아요 10개 달성', '2023-08-20 22:04:55.000000'),
+       ('2023-08-20 22:04:28.000000', '리뷰 첫 작성', '리뷰 첫 작성', '2023-08-20 22:04:55.000000'),
+       ('2023-08-20 22:04:28.000000', '리뷰 답글 작성', '리뷰 답글 작성', '2023-08-20 22:04:55.000000');
+
+INSERT INTO attachments_tb (attachment_no, attachment_category, attachment_changed_name, attachment_original_name, attachment_url)
+VALUES (1, 'achievements', '슈퍼스타코기', '슈퍼스타코기', '/assets/img/'),
+       (2, 'achievements', '키보드치는 코기', '키보드치는 코기', '/assets/img/'),
+       (3, 'achievements', '모니터앞 코기', '모니터앞 코기', '/assets/img/');
