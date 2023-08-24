@@ -28,4 +28,21 @@
         from review r
         where r.review_no = #{reviewNo}
     </select>
+
+    <!-- 리뷰 검색 -->
+    <select id="reviewListByKeyword" resultMap="reviewResultMap">
+        select *
+        from review r
+        where
+        <if test="searchType == 'title'">
+            r.review_title LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType == 'content'">
+            r.review_content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="searchType == 'both'">
+            r.review_title LIKE CONCAT('%', #{keyword}, '%') OR
+            r.review_content LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+    </select>
 </mapper>

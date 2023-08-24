@@ -21,7 +21,7 @@ public class CreateCommentResponse {
 
     public static CreateCommentResponse fromEntity(Comment comment) {
         return CreateCommentResponse.builder()
-                .reviewNo(comment.getReview().getReviewNo())
+//                .reviewNo(comment.getReview().getReviewNo())
                 .memberNo(comment.getMemberNo())
                 .commentContent(comment.getCommentContent())
                 .build();

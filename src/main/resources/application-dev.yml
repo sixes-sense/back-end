@@ -1,4 +1,6 @@
 spring:
+    config:
+        import: "optional:configserver:http://3.129.125.36:80/"
     datasource:
         driver-class-name: ${connection.driver}
         url: ${connection.url}
@@ -16,7 +18,7 @@ spring:
                 show_sql: true
                 format_sql: true
         hibernate:
-            ddl-auto: create
+            ddl-auto: create-drop
         defer-datasource-initialization: true
     sql:
         init:
