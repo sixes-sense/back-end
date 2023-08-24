@@ -1,23 +1,28 @@
-package com.sixesSense.recorder.review.command.application.controller;
+package com.sixesSense.recorder.review.command.application.service;
 
 
-import com.sixesSense.recorder.review.command.application.controller.object.TestObjects;
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
+import com.sixesSense.recorder.review.command.application.dto.review.request.SearchReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
+import com.sixesSense.recorder.review.command.application.dto.review.response.SearchReviewResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
-import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
+import com.sixesSense.recorder.review.command.application.service.object.TestObjects;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
+import com.sixesSense.recorder.review.query.application.service.QueryReviewServiceImpl;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -30,6 +35,9 @@ public class CommandReviewTests {
 
     @Autowired
     private CommandReviewServiceImpl commandReviewService;
+
+    @Autowired
+    private QueryReviewServiceImpl queryReviewService;
 
     @Autowired
     private ReviewRepository reviewRepository;
@@ -153,13 +161,61 @@ public class CommandReviewTests {
         Long reviewNo = 15L;
         PostLikeRequest postLikeRequest = TestObjects.countReviewLike(2l, true);
         Review reviewBefore = reviewRepository.findByReviewNo(reviewNo);
-        long beforeLike = Math.max(0l, reviewBefore.getLikeCnt()-1l);
+        Long beforeLike = Math.max(0l, reviewBefore.getLikeCnt()-1l);
 
         PostLikeResponse postLikeResponse =commandReviewService.countLike(reviewNo, postLikeRequest);
         Review reviewAfter = reviewRepository.findByReviewNo(reviewNo);
-        long afterLike = reviewAfter.getLikeCnt();
+        Long afterLike = reviewAfter.getLikeCnt();
 
         Assertions.assertFalse(postLikeResponse.getIsLiked());
         Assertions.assertEquals(beforeLike, afterLike);
+    }
+
+    @DisplayName("제목만 검색")
+    @Test
+    void searchTitle(){
+        String keyword = "매실";
+        String type = "title";
+        int pageStart = 0;
+        int reviewSize = 10;
+
+        Pageable pageable = PageRequest.of(pageStart,reviewSize);
+        SearchReviewRequest searchReviewRequest = TestObjects.searchReviewTitle(keyword, type);
+
+        Page<SearchReviewResponse> searchReviewResponses = queryReviewService.searchReview(searchReviewRequest, pageable);
+
+        Assertions.assertNotNull(searchReviewResponses);
+    }
+
+    @DisplayName("내용만 검색")
+    @Test
+    void searchContent(){
+        String keyword = "컴포즈";
+        String type = "content";
+        int pageStart = 0;
+        int reviewSize = 10;
+
+        Pageable pageable = PageRequest.of(pageStart,reviewSize);
+        SearchReviewRequest searchReviewRequest = TestObjects.searchReviewTitle(keyword, type);
+
+        Page<SearchReviewResponse> searchReviewResponses = queryReviewService.searchReview(searchReviewRequest, pageable);
+
+        Assertions.assertNotNull(searchReviewResponses);
+    }
+
+    @DisplayName("전부 검색")
+    @Test
+    void searchAll(){
+        String keyword = "컴포즈";
+        String type = "both";
+        int pageStart = 0;
+        int reviewSize = 10;
+
+        Pageable pageable = PageRequest.of(pageStart,reviewSize);
+        SearchReviewRequest searchReviewRequest = TestObjects.searchReviewTitle(keyword, type);
+
+        Page<SearchReviewResponse> searchReviewResponses = queryReviewService.searchReview(searchReviewRequest, pageable);
+
+        Assertions.assertNotNull(searchReviewResponses);
     }
 }
