@@ -1,13 +1,10 @@
-package com.sixesSense.recorder.review.command.application.controller;
+package com.sixesSense.recorder.review.command.application.service;
 
-import com.sixesSense.recorder.review.command.application.controller.object.TestObjects;
 import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
 import com.sixesSense.recorder.review.command.application.dto.comment.response.CreateCommentResponse;
 import com.sixesSense.recorder.review.command.application.dto.comment.response.UpdateCommentResponse;
-import com.sixesSense.recorder.review.command.application.service.CommandCommentServiceImpl;
-import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
+import com.sixesSense.recorder.review.command.application.service.object.TestObjects;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Comment;
-import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
 import com.sixesSense.recorder.review.command.domain.repository.CommentRepository;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadCommentResponse;

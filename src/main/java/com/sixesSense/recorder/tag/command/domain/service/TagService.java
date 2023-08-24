@@ -4,4 +4,5 @@ import com.sixesSense.recorder.tag.command.application.dto.CreateTagRequest;
 
 public interface TagService {
     void createTag(CreateTagRequest tagRequest);
+    void deleteByTagId(Long tagId);
 }
