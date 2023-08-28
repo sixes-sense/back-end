@@ -19,20 +19,20 @@
     <!-- 전체 리뷰 조회 -->
     <select id="reviewLists" resultMap="reviewResultMap">
         select *
-        from review
+        from review_tb
     </select>
 
     <!-- 상세 리뷰 조회-->
     <select id="reviewListByReviewNo" resultMap="reviewResultMap">
         select *
-        from review r
+        from review_tb r
         where r.review_no = #{reviewNo}
     </select>
 
     <!-- 리뷰 검색 -->
     <select id="reviewListByKeyword" resultMap="reviewResultMap">
         select *
-        from review r
+        from review_tb r
         where
         <if test="searchType == 'title'">
             r.review_title LIKE CONCAT('%', #{keyword}, '%')

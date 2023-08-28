@@ -15,7 +15,7 @@
     <!-- 전체 댓글 조회 -->
     <select id="commentList" resultMap="commentResultMap">
         select c.member_no, c.comment_content
-        from comment c
+        from comment_tb c
         where c.review_no = #{ reviewNo }
     </select>
 </mapper>
