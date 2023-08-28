@@ -1,4 +1,4 @@
-create table review (
+create table Review_TB (
                         review_no bigint not null auto_increment,
                         book_mark_cnt bigint,
                         like_cnt bigint,

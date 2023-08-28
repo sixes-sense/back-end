@@ -6,12 +6,13 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @ToString(exclude = "review")
 @Builder
+@Entity(name = "Comment_TB")
 public class Comment extends BaseTimeEntity {
     @Id
     @Column(name = "comment_no")

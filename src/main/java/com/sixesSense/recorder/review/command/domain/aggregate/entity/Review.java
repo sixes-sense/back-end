@@ -11,12 +11,13 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @ToString
 @Builder
+@Entity(name = "Review_TB")
 public class Review extends BaseTimeEntity {
 
     @Id

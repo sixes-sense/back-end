@@ -5,12 +5,13 @@ import com.sixesSense.recorder.review.command.application.dto.like.request.PostL
 import lombok.*;
 import javax.persistence.*;
 
-@Entity
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @ToString
 @Builder
+@Entity(name = "ReviewLikes_TB")
 public class ReviewLikes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
