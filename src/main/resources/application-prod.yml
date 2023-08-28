@@ -1,6 +1,9 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: ${connection.driver}
+    url: ${connection.url}
+    username: ${connection.username}
+    password: ${connection.password}
     hikari:
       auto-commit: false
   jpa:
