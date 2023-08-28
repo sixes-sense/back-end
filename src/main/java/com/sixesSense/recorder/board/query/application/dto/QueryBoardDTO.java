@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @Setter
 public class QueryBoardDTO {
     private Long id;            // 요청번호
-    private String title;       // 제목
-    private String content;     // 본문
+    private String boardTitle;       // 제목
+    private String boardContents;     // 본문
+    private int boardHits;
     private LocalDateTime createdAt;       // 작성날짜
     private LocalDateTime lastModifiedAt;   // 수정 날짜
-    private Long adminId;       // 관리자번호
 }
