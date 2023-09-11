@@ -80,4 +80,6 @@ public class Review extends BaseTimeEntity {
         }
     }
 
+    public void increaseReportsCount() { this.reportCnt += 1; }
+
 }

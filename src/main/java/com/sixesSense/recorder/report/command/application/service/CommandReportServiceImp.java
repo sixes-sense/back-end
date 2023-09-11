@@ -5,6 +5,8 @@ import com.sixesSense.recorder.report.command.application.dto.response.CreateRep
 import com.sixesSense.recorder.report.command.domain.aggregate.entity.Report;
 import com.sixesSense.recorder.report.command.domain.repository.ReportRepository;
 import com.sixesSense.recorder.report.command.domain.service.ReportService;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
+import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import javax.transaction.Transactional;
 public class CommandReportServiceImp implements ReportService {
 
     private final ReportRepository reportRepository;
+    private final ReviewRepository reviewRepository;
 
     @Override
     @Transactional
@@ -25,6 +28,14 @@ public class CommandReportServiceImp implements ReportService {
         Report createReport = reportRepository.save(report);
 
         CreateReportResponse createReportResponse = CreateReportResponse.fromReport(createReport);
+
+        // 리뷰 reportCnt 증가 로직
+        Long reviewNo = createReportRequest.getReviewNo();
+
+        Review review = reviewRepository.findByReviewNo(reviewNo);
+
+        review.increaseReportsCount();
+        reviewRepository.save(review);
 
         return createReportResponse;
     }

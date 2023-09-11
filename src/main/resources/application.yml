@@ -10,7 +10,10 @@ server:
       enabled: true
       force: true
 spring:
-  name : client
+  application:
+    name: recorder
+  config:
+    import: "optional:configserver:${CONFIG_SERVER_HOST}"
   profiles:
     active: dev
     web:
@@ -23,4 +26,3 @@ spring:
           uri:
 mybatis:
   mapper-locations: mappers/**/*.xml
-

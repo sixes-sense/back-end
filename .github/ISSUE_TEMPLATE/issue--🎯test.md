@@ -2,7 +2,7 @@
 name: "Issue: \U0001F3AFTEST"
 about: test 작업 사항을 입력해주세요.
 title: "[Test] "
-labels: ''
+labels: test
 assignees: ''
 
 ---
