@@ -1,12 +1,15 @@
 package com.sixesSense.recorder.review.command.application.controller;
 
 
+import com.sixesSense.recorder.review.command.application.dto.comment.request.CreateCommentRequest;
+import com.sixesSense.recorder.review.command.application.dto.comment.response.CreateCommentResponse;
 import com.sixesSense.recorder.review.command.application.dto.like.request.PostLikeRequest;
 import com.sixesSense.recorder.review.command.application.dto.like.response.PostLikeResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.response.CreateReviewResponse;
 import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
+import com.sixesSense.recorder.review.command.application.service.CommandCommentServiceImpl;
 import com.sixesSense.recorder.review.command.application.service.CommandReviewServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,8 @@ import org.springframework.web.bind.annotation.*;
 public class CommandReviewController {
 
     private final CommandReviewServiceImpl reviewService;
+
+    private final CommandCommentServiceImpl commandCommentService;
 
     @GetMapping("/write")
     public ResponseEntity<String> writeReviewPage(){
@@ -52,6 +57,14 @@ public class CommandReviewController {
     public ResponseEntity<PostLikeResponse> postLike(@PathVariable Long reviewNo, @RequestBody PostLikeRequest postLikeRequest){
         PostLikeResponse postLikeResponse = reviewService.countLike(reviewNo, postLikeRequest);
         return ResponseEntity.ok(postLikeResponse);
+    }
+
+    @PostMapping("/{reviewNo}/comment")
+    @ResponseBody
+    public ResponseEntity<CreateCommentResponse> create(@PathVariable Long reviewNo, @RequestBody CreateCommentRequest request){
+        CreateCommentResponse response = commandCommentService.createComment(request, reviewNo);
+
+        return ResponseEntity.ok(response);
     }
 
 }

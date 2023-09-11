@@ -50,7 +50,7 @@ public class CommandReviewTests {
 
     @DisplayName("리뷰 등록 테스트")
     @Test
-    void CreateReview() {
+    void createReview() {
         CreateReviewRequest review = TestObjects.createContentWithReview();
 
         CreateReviewResponse createReviewResponse = commandReviewService.reviewSave(review);
@@ -60,7 +60,7 @@ public class CommandReviewTests {
 
     @DisplayName("리뷰 전체 조회 테스트")
     @Test
-    void ReadReviews() {
+    void readReviews() {
         List<ReadReviewResponse> reviewDTOList = reviewMapper.reviewLists();
 
         Assertions.assertNotNull(reviewDTOList);
@@ -68,7 +68,7 @@ public class CommandReviewTests {
 
     @DisplayName("리뷰 상세 조회 테스트")
     @Test
-    void ReadReviewByReviewNo() {
+    void readReviewByReviewNo() {
         Long reviewNo = 1L;
 
         ReadReviewResponse review = reviewMapper.reviewListByReviewNo(reviewNo);
@@ -78,7 +78,7 @@ public class CommandReviewTests {
 
     @DisplayName("리뷰 제목만 수정")
     @Test
-    void UpdateReviewWithTitle(){
+    void updateReviewWithTitle(){
         Long reviewNo = 1L;
         ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
         UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
@@ -95,7 +95,7 @@ public class CommandReviewTests {
 
     @DisplayName("리뷰 내용만 수정")
     @Test
-    void UpdateReviewWithContent(){
+    void updateReviewWithContent(){
         Long reviewNo = 1L;
         ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
         UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
@@ -112,7 +112,7 @@ public class CommandReviewTests {
 
     @DisplayName("리뷰 둘다 수정")
     @Test
-    void UpdateReviewAll(){
+    void updateReviewAll(){
         Long reviewNo = 1L;
         ReadReviewResponse review = reviewMapper.reviewListByReviewNo(1l);
         UpdateReviewRequest updatingReview = TestObjects.updateContentWithReview(review,
@@ -129,7 +129,7 @@ public class CommandReviewTests {
 
     @DisplayName("리뷰 삭제 확인")
     @Test
-    void DeleteReview(){
+    void deleteReview(){
         Long reviewNo = 1L;
 
         Assertions.assertDoesNotThrow(
