@@ -56,9 +56,7 @@ public class CommandReviewServiceImpl implements ReviewService {
                     commandTagService.createTag(createTagRequest);
 
                     tag = tagRepository.findByTagName(tagName);
-                    System.out.println("조건문 내부의 태그 주소 = " + tag.hashCode());
                 }
-                System.out.println("조건문 외부의 태그 주소 = " + tag.hashCode());
                 ReviewTag reviewTag = ReviewTag.toEntity(tag.getTagId(), createdReview.getReviewNo());
                 reviewTagRepository.save(reviewTag);
             }
