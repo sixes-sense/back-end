@@ -1,6 +1,5 @@
 package com.sixesSense.recorder.review.query.domain.aggregate.entity;
 
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewTagVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
 import lombok.*;
 
@@ -37,9 +36,6 @@ public class QueryReview {
 
     @Column(name = "book_mark_cnt")
     private Long bookMarkCnt;
-
-    @Embedded
-    private ReviewTagVO tagNo;
 
     @Embedded
     private ReviewWriterVO reviewWriter;
