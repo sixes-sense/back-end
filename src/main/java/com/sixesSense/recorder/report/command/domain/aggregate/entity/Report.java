@@ -7,7 +7,7 @@ import com.sixesSense.recorder.report.command.domain.aggregate.vo.ReviewInfoVO;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Builder
@@ -23,7 +23,7 @@ public class Report {
     private Long reportNo;
 
     @Column(name = "report_date")
-    private LocalDate reportDate;
+    private LocalDateTime reportDate;
 
     @Column(name = "report_content")
     private String reportContent;
