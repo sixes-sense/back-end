@@ -32,8 +32,11 @@ public class Report {
     @Column(name = "report_type")
     private ReportType reportType;
 
-    @Column(name = "blind_status")
-    private Boolean blindStatus;
+    @Column(name = "is_blind_status")
+    private Boolean isBlindStatus;
+
+    @Column(name = "is_admin_blind_status")
+    private Boolean isAdminBlindStatus;
 
     @Embedded
     private ReviewInfoVO reviewInfoVO;
