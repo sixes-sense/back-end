@@ -6,6 +6,7 @@ import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ public class CreateReportResponse {
 
     private String reportContent;
 
-    private LocalDate reportDate;
+    private LocalDateTime reportDate;
 
     private Long reviewNo;
 
