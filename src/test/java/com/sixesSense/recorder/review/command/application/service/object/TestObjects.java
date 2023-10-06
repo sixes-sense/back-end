@@ -7,16 +7,20 @@ import com.sixesSense.recorder.review.command.application.dto.review.request.Sea
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 
 public class TestObjects {
 
     public static CreateReviewRequest createContentWithReview(){
+        List<String> tagNames = Arrays.asList("미미스크립트", "무무썬", "자바");
+
         return CreateReviewRequest.builder()
                 .reviewTitle("테스트 제목")
                 .reviewContent("테스트 내용")
-                .tagNo(1L)
+                .tagNames(tagNames)
                 .reviewWriter(1L)
                 .build();
     }

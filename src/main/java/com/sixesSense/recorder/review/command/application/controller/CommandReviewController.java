@@ -17,7 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
 @RequestMapping("api/v1/reviews")
 @RequiredArgsConstructor
 public class CommandReviewController {
@@ -32,35 +32,30 @@ public class CommandReviewController {
     }
 
     @PostMapping("/write")
-    @ResponseBody
     public ResponseEntity<CreateReviewResponse> writeReview(@RequestBody CreateReviewRequest createRequest){
         CreateReviewResponse createReviewResponse = reviewService.reviewSave(createRequest);
         return ResponseEntity.ok(createReviewResponse);
     }
 
     @PatchMapping("/{reviewNo}")
-    @ResponseBody
     public ResponseEntity<UpdateReviewResponse> updateReview(@RequestBody UpdateReviewRequest updateReviewRequest, @PathVariable Long reviewNo){
         UpdateReviewResponse updateReviewResponse = reviewService.reviewUpdate(updateReviewRequest, reviewNo);
         return ResponseEntity.ok(updateReviewResponse);
     }
 
     @DeleteMapping("/{reviewNo}")
-    @ResponseBody
     public ResponseEntity<String> deleteReview(@PathVariable Long reviewNo){
         reviewService.reviewDelete(reviewNo);
         return ResponseEntity.ok("Review has been deleted successfully");
     }
 
     @PostMapping("/{reviewNo}/like")
-    @ResponseBody
     public ResponseEntity<PostLikeResponse> postLike(@PathVariable Long reviewNo, @RequestBody PostLikeRequest postLikeRequest){
         PostLikeResponse postLikeResponse = reviewService.countLike(reviewNo, postLikeRequest);
         return ResponseEntity.ok(postLikeResponse);
     }
 
     @PostMapping("/{reviewNo}/comment")
-    @ResponseBody
     public ResponseEntity<CreateCommentResponse> create(@PathVariable Long reviewNo, @RequestBody CreateCommentRequest request){
         CreateCommentResponse response = commandCommentService.createComment(request, reviewNo);
 

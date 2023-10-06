@@ -19,15 +19,13 @@ public class CreateReviewResponse {
 
     private LocalDate reviewDate;
 
-    private Long tagNo;
-
     private Long reviewWriter;
 
     public static CreateReviewResponse toCreateResponse(Review review) {
         return CreateReviewResponse.builder()
+                .reviewNo(review.getReviewNo())
                 .reviewTitle(review.getReviewTitle())
                 .reviewContent(review.getReviewContent())
-                .tagNo(review.getTagNo().getTagNo())
                 .reviewWriter(review.getReviewWriter().getReviewWriterMemberNo())
                 .build();
     }

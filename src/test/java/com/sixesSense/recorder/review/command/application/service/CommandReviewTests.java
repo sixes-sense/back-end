@@ -11,10 +11,14 @@ import com.sixesSense.recorder.review.command.application.dto.review.response.Se
 import com.sixesSense.recorder.review.command.application.dto.review.response.UpdateReviewResponse;
 import com.sixesSense.recorder.review.command.application.service.object.TestObjects;
 import com.sixesSense.recorder.review.command.domain.aggregate.entity.Review;
+import com.sixesSense.recorder.review.command.domain.aggregate.entity.ReviewTag;
 import com.sixesSense.recorder.review.command.domain.repository.ReviewRepository;
+import com.sixesSense.recorder.review.command.domain.repository.ReviewTagRepository;
 import com.sixesSense.recorder.review.query.application.dto.response.ReadReviewResponse;
 import com.sixesSense.recorder.review.query.application.service.QueryReviewServiceImpl;
 import com.sixesSense.recorder.review.query.domain.repository.ReviewMapper;
+import com.sixesSense.recorder.tag.command.domain.aggregate.entity.Tag;
+import com.sixesSense.recorder.tag.command.domain.repository.TagRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -45,17 +49,30 @@ public class CommandReviewTests {
     @Autowired
     private ReviewMapper reviewMapper;
 
+    @Autowired
+    private ReviewTagRepository reviewTagRepository;
+
+    @Autowired
+    private TagRepository tagRepository;
 
 
 
-    @DisplayName("리뷰 등록 테스트")
+    @DisplayName("리뷰를 등록할때 태그 유효성 검사 후 리뷰를 등록하는지")
     @Test
     void createReview() {
         CreateReviewRequest review = TestObjects.createContentWithReview();
 
         CreateReviewResponse createReviewResponse = commandReviewService.reviewSave(review);
 
-        Assertions.assertNotNull(createReviewResponse);
+        /* 리뷰 등록 및 리뷰 태그 생성 확인 */
+        for (String tagName : review.getTagNames()){
+            Tag tag = tagRepository.findByTagName(tagName);
+            ReviewTag reviewTag = reviewTagRepository.findByTagIdAndReviewNo(tag.getTagId(), createReviewResponse.getReviewNo());
+
+            Assertions.assertNotNull(reviewTag, "리뷰 태그가 생성되지 않았습니다.");
+        }
+
+        Assertions.assertNotNull(createReviewResponse, "리뷰가 생성되지 않았습니다.");
     }
 
     @DisplayName("리뷰 전체 조회 테스트")

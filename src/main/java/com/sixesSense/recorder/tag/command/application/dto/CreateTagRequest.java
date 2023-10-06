@@ -9,10 +9,11 @@ import lombok.ToString;
 @ToString
 public class CreateTagRequest {
 
-    private Long tagId;
+//    private Long tagId;
     private String tagName;
 
     public CreateTagRequest(String tagName) {
         this.tagName = tagName;
     }
+
 }

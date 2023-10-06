@@ -39,8 +39,7 @@ class QueryTagServiceImplTest {
         List<QueryTag> tags = tagService.getAllTags();
 
         //then
-        assertEquals(2, tags.size());
-        assertEquals(tag1.getTagName(), tags.get(0).getTagName());
-        assertEquals(tag2.getTagName(), tags.get(1).getTagName());
+        assertTrue(tags.stream().anyMatch(tag -> tag.getTagName().equals(tag1.getTagName())));
+        assertTrue(tags.stream().anyMatch(tag -> tag.getTagName().equals(tag2.getTagName())));
     }
 }

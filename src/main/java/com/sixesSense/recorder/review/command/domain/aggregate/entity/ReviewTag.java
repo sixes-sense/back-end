@@ -1,9 +1,6 @@
 package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +8,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 @Table(name = "ReviewTag_TB")
 public class ReviewTag {
 
@@ -25,6 +23,13 @@ public class ReviewTag {
     private Long reviewNo;
 
     @org.hibernate.annotations.Comment("태그 번호")
-    @Column(name = "tag_no")
-    private Long tagNo;
+    @Column(name = "tag_id")
+    private Long tagId;
+
+    public static ReviewTag toEntity(Long tagId, Long reviewNo) {
+        return ReviewTag.builder()
+                .reviewNo(reviewNo)
+                .tagId(tagId)
+                .build();
+    }
 }

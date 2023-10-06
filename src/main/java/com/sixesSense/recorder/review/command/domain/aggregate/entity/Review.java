@@ -3,12 +3,10 @@ package com.sixesSense.recorder.review.command.domain.aggregate.entity;
 import com.sixesSense.recorder.common.entity.BaseTimeEntity;
 import com.sixesSense.recorder.review.command.application.dto.review.request.CreateReviewRequest;
 import com.sixesSense.recorder.review.command.application.dto.review.request.UpdateReviewRequest;
-import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewTagVO;
 import com.sixesSense.recorder.review.command.domain.aggregate.vo.ReviewWriterVO;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -41,9 +39,6 @@ public class Review extends BaseTimeEntity {
     private Long bookMarkCnt;
 
     @Embedded
-    private ReviewTagVO tagNo;
-
-    @Embedded
     private ReviewWriterVO reviewWriter;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -56,7 +51,6 @@ public class Review extends BaseTimeEntity {
                 .likeCnt(0l)
                 .reportCnt(0l)
                 .bookMarkCnt(0l)
-                .tagNo(new ReviewTagVO(createReviewRequest.getTagNo()))
                 .reviewWriter(new ReviewWriterVO(createReviewRequest.getReviewWriter()))
                 .build();
     }

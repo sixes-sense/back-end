@@ -2,6 +2,8 @@ package com.sixesSense.recorder.review.command.application.dto.review.request;
 
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
@@ -13,7 +15,7 @@ public class CreateReviewRequest {
 
     private String reviewContent;
 
-    private Long tagNo;
-
     private Long reviewWriter;
+
+    private List<String> tagNames;
 }
