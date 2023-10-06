@@ -12,6 +12,10 @@ public class CreateTagRequest {
 //    private Long tagId;
     private String tagName;
 
+    public CreateTagRequest() {
+
+    }
+
     public CreateTagRequest(String tagName) {
         this.tagName = tagName;
     }
