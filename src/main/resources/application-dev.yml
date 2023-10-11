@@ -1,6 +1,4 @@
 spring:
-    config:
-        import: "optional:configserver:http://3.129.125.36:80/"
     datasource:
         driver-class-name: ${connection.driver}
         url: ${connection.url}
