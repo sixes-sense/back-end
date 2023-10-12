@@ -17,5 +17,9 @@ assignees: ''
 - [ ] todo
 - [ ] todo
 
+:airplane:
+- 
+고려할만한 대체수단을 입력해주세요
+
 🐾ETC
 -
